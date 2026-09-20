@@ -61,11 +61,12 @@ const posts = [...newPosts, ...oldPosts].sort((a, b) => (a.date < b.date ? 1 : -
 // ---------- templates ----------
 const nav = (active) => `
 <header class="top">
-  <a class="brand" href="/" aria-label="Aaron Sawit, home"><strong>Aaron Sawit</strong><span>${esc(site.role)} · ${esc(site.location)}</span></a>
+  <a class="brand" href="/" aria-label="Aaron Sawit, home"><svg class="orb" viewBox="0 0 40 40" aria-hidden="true"><circle class="orb-glow" cx="20" cy="20" r="17"/><circle class="orb-rim" cx="20" cy="20" r="15"/><ellipse class="orb-m m1" cx="20" cy="20" rx="15" ry="15"/><ellipse class="orb-m m2" cx="20" cy="20" rx="15" ry="15"/><ellipse class="orb-m m3" cx="20" cy="20" rx="15" ry="15"/><ellipse class="orb-eq" cx="20" cy="20" rx="15" ry="5"/><g class="orb-sat"><circle cx="20" cy="3.5" r="2"/></g></svg><strong>Aaron Sawit</strong><span>${esc(site.role)} · ${esc(site.location)}</span></a>
   <nav aria-label="Main">
     <a href="/#quests"${active === "work" ? ' aria-current="page"' : ""}>Work</a>
     <a class="opt" href="/writing/"${active === "writing" ? ' aria-current="page"' : ""}>Write-ups</a>
     <a href="/ai/"${active === "ai" ? ' aria-current="page"' : ""}>AI</a>
+    <a class="opt" href="/break/"${active === "break" ? ' aria-current="page"' : ""}>Break my bot</a>
     <a class="opt" href="/detections/"${active === "detections" ? ' aria-current="page"' : ""}>Detections</a>
     <a href="/cv/"${active === "cv" ? ' aria-current="page"' : ""}>CV</a>
     <a class="nav-cta" href="/#contact">Contact</a>
@@ -176,8 +177,8 @@ const home = `
       <p class="lede">Risk and compliance by day. In my own time I ship products people use, run my own infrastructure, put guardrails on AI, and trace every failure to its real cause.</p>
       <div class="actions">
         <a class="btn btn-solid" href="/cv/">Read my CV</a>
+        <a class="btn btn-play" href="/break/">Break my bot</a>
         <a class="btn" href="#quests">See the work</a>
-        ${site.linkedin ? `<a class="btn" href="${site.linkedin}">LinkedIn</a>` : ""}
       </div>
     </div>
     <div class="globe-wrap" aria-hidden="true"><canvas id="globe"></canvas></div>
@@ -188,10 +189,10 @@ const home = `
         ${site.proof.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}
       </dl>
       <ul class="nums">
-        <li><strong>4</strong><span>products shipped solo</span></li>
-        <li><strong>40+</strong><span>services run, 0 open ports</span></li>
+        <li><strong>4</strong><span>products shipped solo, used by real students</span></li>
+        <li><strong>${detections.length}</strong><span>tested detection rules, 15 ATT&amp;CK techniques</span></li>
+        <li><strong>12</strong><span>open-source repos with passing builds</span></li>
         <li><strong>${cases.length}</strong><span>root-cause write-ups</span></li>
-        <li><strong>36</strong><span>tests on my open-source triage tool</span></li>
       </ul>
   </aside>
   </div>
@@ -207,11 +208,35 @@ const home = `
   </div>
 </section>
 
+<section class="band band-alt" id="ai">
+  <div class="wrap">
+    <div class="band-head">
+      <h2><small>limits, tests and a human in charge</small>AI engineering</h2>
+      <p>${esc(ai.lede)}</p>
+    </div>
+    <p class="ai-play"><a class="btn btn-play" href="/break/">Play "Break my bot"</a> <span>a six-level game I built: talk a chatbot into leaking its password, and see which defences hold.</span></p>
+    <ol class="lab">${ai.projects.slice(0, 3).map(labCard).join("")}</ol>
+    <p class="more"><a href="/ai/">All ${ai.projects.length} AI projects, and the six rules I build them by</a></p>
+  </div>
+</section>
+
+<section class="band" id="inventory">
+  <div class="wrap">
+    <div class="band-head">
+      <h2><small>three kinds of work</small>What I bring to a team</h2>
+      <p>Three kinds of work, and the tools I reach for in each.</p>
+    </div>
+    <div class="inventory">
+      ${site.fit.map((f, i) => `<section><h3>${esc(f.title)}</h3><p>${esc(f.text)}</p>${tags(site.cv.skills[[1, 2, 3][i]][1].split(", ").slice(0, 9))}</section>`).join("")}
+    </div>
+  </div>
+</section>
+
 <section class="band band-alt" id="side">
   <div class="wrap">
     <div class="band-head">
       <h2><small>smaller, sharper</small>More work</h2>
-      <p>Performance work on old hardware, and security tooling with tests that pass in public.</p>
+      <p>Infrastructure and performance work on my own hardware, plus the small open-source tools that came out of it.</p>
     </div>
     <ol class="quests">${side.map(questCard).join("")}</ol>
     <div class="also">
@@ -223,18 +248,7 @@ const home = `
   </div>
 </section>
 
-<section class="band" id="ai">
-  <div class="wrap">
-    <div class="band-head">
-      <h2><small>limits, tests and a human in charge</small>AI engineering</h2>
-      <p>${esc(ai.lede)}</p>
-    </div>
-    <ol class="lab">${ai.projects.slice(0, 3).map(labCard).join("")}</ol>
-    <p class="more"><a href="/ai/">All ${ai.projects.length} AI projects, and the six rules I build them by</a></p>
-  </div>
-</section>
-
-<section class="band band-alt" id="bugs">
+<section class="band" id="bugs">
   <div class="wrap">
     <div class="band-head">
       <h2><small>reported symptom, then the actual cause</small>Root-cause write-ups</h2>
@@ -248,18 +262,6 @@ const home = `
   <span class="slain">SOLVED</span>
 </a></li>`).join("")}</ol>
     <p class="more"><a href="/writing/">All ${posts.length} write-ups</a> · <a href="/detections/">${detections.length} tested detection rules</a></p>
-  </div>
-</section>
-
-<section class="band" id="inventory">
-  <div class="wrap">
-    <div class="band-head">
-      <h2><small>three kinds of work</small>What I bring to a team</h2>
-      <p>Three kinds of work, and the tools I reach for in each.</p>
-    </div>
-    <div class="inventory">
-      ${site.fit.map((f, i) => `<section><h3>${esc(f.title)}</h3><p>${esc(f.text)}</p>${tags(site.cv.skills[[1, 2, 3][i]][1].split(", ").slice(0, 9))}</section>`).join("")}
-    </div>
   </div>
 </section>
 

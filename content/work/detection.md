@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 2
 title: Detection tooling
 kind: Blue team, Python
 summary: Small, tested tools from my defensive security practice: a log triage pipeline that pairs rule-based detection with an LLM classifier, a phishing link analyser, and hand-written Snort and iptables rules.

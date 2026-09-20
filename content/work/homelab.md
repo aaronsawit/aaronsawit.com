@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 4
 title: One box, forty services
 kind: Infrastructure, self-hosted
 summary: A recycled gaming PC running forty-odd containers for my family: photos, passwords, media, DNS filtering, game streaming and local AI. Reachable from anywhere, with no port open to the internet.

@@ -1,0 +1,1 @@
+TargetFilename IN ("/etc/systemd/system/*", "/usr/lib/systemd/system/*", "/lib/systemd/system/*") OR TargetFilename="*/.config/systemd/user/*" TargetFilename IN ("*.service", "*.timer") NOT (Image IN ("*/dpkg", "*/apt", "*/apt-get", "*/rpm", "*/dnf", "*/yum", "*/pacman", "*/systemd", "*/systemctl"))

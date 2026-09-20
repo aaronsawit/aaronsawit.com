@@ -1,37 +1,137 @@
 {
-  "win_sysmon_dll_sideload_system_dll_user_path": {
-    "match": [
-      {"EventID": 7, "Image": "C:\\Users\\Administrator\\Desktop\\calc.exe", "ImageLoaded": "C:\\Users\\Administrator\\Desktop\\WININET.dll", "Signed": "false", "Signature": "-"}
-    ],
-    "no_match": [
-      {"EventID": 7, "Image": "C:\\Windows\\System32\\calc.exe", "ImageLoaded": "C:\\Windows\\System32\\wininet.dll", "Signed": "true", "Signature": "Microsoft Windows"},
-      {"EventID": 7, "Image": "C:\\Users\\a\\AppData\\Local\\App\\app.exe", "ImageLoaded": "C:\\Users\\a\\AppData\\Local\\App\\version.dll", "Signed": "true", "Signature": "Microsoft Windows"},
-      {"EventID": 7, "Image": "C:\\Users\\a\\Desktop\\tool.exe", "ImageLoaded": "C:\\Users\\a\\Desktop\\helper.dll", "Signed": "false", "Signature": "-"}
-    ]
-  },
-  "win_sysmon_unmanaged_powershell_clr_load": {
-    "match": [
-      {"EventID": 7, "Image": "C:\\Windows\\System32\\spoolsv.exe", "ImageLoaded": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\clrjit.dll"}
-    ],
-    "no_match": [
-      {"EventID": 7, "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "ImageLoaded": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\clrjit.dll"},
-      {"EventID": 7, "Image": "C:\\Windows\\System32\\spoolsv.exe", "ImageLoaded": "C:\\Windows\\System32\\winspool.drv"}
-    ]
-  },
-  "dns_encrypted_dns_bypass_of_filtering_resolver": {
-    "match": [
-      {"src_ip": "100.76.30.48", "query": "mask.icloud.com", "qtype": "A"},
-      {"src_ip": "100.76.30.48", "query": "one.one.one.one", "qtype": "HTTPS"}
-    ],
-    "no_match": [
-      {"src_ip": "100.76.30.48", "query": "www.icloud.com", "qtype": "A"},
-      {"src_ip": "172.20.0.2", "query": "cloudflare-dns.com", "qtype": "A"}
-    ]
-  },
-  "lnx_sshd_failed_password": {
-    "correlation": {
-      "match": {"events": 12, "within_seconds": 120, "fields": {"src_ip": "203.0.113.5", "message": "Failed password for root from 203.0.113.5 port 22 ssh2"}},
-      "no_match": {"events": 4, "within_seconds": 120, "fields": {"src_ip": "198.51.100.9", "message": "Failed password for deploy from 198.51.100.9 port 22 ssh2"}}
+ "win_sysmon_dll_sideload_system_dll_user_path": {
+  "match": [
+   {
+    "EventID": 7,
+    "Image": "C:\\Users\\Administrator\\Desktop\\calc.exe",
+    "ImageLoaded": "C:\\Users\\Administrator\\Desktop\\WININET.dll",
+    "Signed": "false",
+    "Signature": "-"
+   }
+  ],
+  "no_match": [
+   {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\calc.exe",
+    "ImageLoaded": "C:\\Windows\\System32\\wininet.dll",
+    "Signed": "true",
+    "Signature": "Microsoft Windows"
+   },
+   {
+    "EventID": 7,
+    "Image": "C:\\Users\\a\\AppData\\Local\\App\\app.exe",
+    "ImageLoaded": "C:\\Users\\a\\AppData\\Local\\App\\version.dll",
+    "Signed": "true",
+    "Signature": "Microsoft Windows"
+   },
+   {
+    "EventID": 7,
+    "Image": "C:\\Users\\a\\Desktop\\tool.exe",
+    "ImageLoaded": "C:\\Users\\a\\Desktop\\helper.dll",
+    "Signed": "false",
+    "Signature": "-"
+   }
+  ]
+ },
+ "win_sysmon_unmanaged_powershell_clr_load": {
+  "match": [
+   {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\spoolsv.exe",
+    "ImageLoaded": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\clrjit.dll"
+   }
+  ],
+  "no_match": [
+   {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "ImageLoaded": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\clrjit.dll"
+   },
+   {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\spoolsv.exe",
+    "ImageLoaded": "C:\\Windows\\System32\\winspool.drv"
+   }
+  ]
+ },
+ "dns_encrypted_dns_bypass_of_filtering_resolver": {
+  "match": [
+   {
+    "src_ip": "100.76.30.48",
+    "query": "mask.icloud.com",
+    "qtype": "A"
+   },
+   {
+    "src_ip": "100.76.30.48",
+    "query": "one.one.one.one",
+    "qtype": "HTTPS"
+   }
+  ],
+  "no_match": [
+   {
+    "src_ip": "100.76.30.48",
+    "query": "www.icloud.com",
+    "qtype": "A"
+   },
+   {
+    "src_ip": "172.20.0.2",
+    "query": "cloudflare-dns.com",
+    "qtype": "A"
+   }
+  ]
+ },
+ "lnx_sshd_failed_password": {
+  "correlation": {
+   "match": {
+    "events": 12,
+    "within_seconds": 120,
+    "fields": {
+     "src_ip": "203.0.113.5",
+     "message": "Failed password for root from 203.0.113.5 port 22 ssh2"
     }
+   },
+   "no_match": {
+    "events": 4,
+    "within_seconds": 120,
+    "fields": {
+     "src_ip": "198.51.100.9",
+     "message": "Failed password for deploy from 198.51.100.9 port 22 ssh2"
+    }
+   }
   }
+ },
+ "lnx_file_event_systemd_unit_written_outside_package_manager": {
+  "match": [
+   {
+    "Image": "/usr/bin/curl",
+    "TargetFilename": "/etc/systemd/system/dbus-helper.service"
+   },
+   {
+    "Image": "/usr/bin/bash",
+    "TargetFilename": "/home/aaron/.config/systemd/user/sync.timer"
+   },
+   {
+    "Image": "/usr/bin/python3",
+    "TargetFilename": "/usr/lib/systemd/system/updater.service"
+   }
+  ],
+  "no_match": [
+   {
+    "Image": "/usr/bin/dpkg",
+    "TargetFilename": "/lib/systemd/system/nginx.service"
+   },
+   {
+    "Image": "/usr/bin/systemctl",
+    "TargetFilename": "/etc/systemd/system/multi-user.target.wants/nginx.service"
+   },
+   {
+    "Image": "/usr/bin/vim",
+    "TargetFilename": "/etc/systemd/system/nginx.service.d/override.conf"
+   },
+   {
+    "Image": "/usr/bin/curl",
+    "TargetFilename": "/tmp/dbus-helper.service"
+   }
+  ]
+ }
 }

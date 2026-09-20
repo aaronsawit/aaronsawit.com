@@ -1,0 +1,1 @@
+((TargetFilename:(\/etc\/systemd\/system\/* OR \/usr\/lib\/systemd\/system\/* OR \/lib\/systemd\/system\/*)) OR TargetFilename:*\/.config\/systemd\/user\/*) AND (TargetFilename:(*.service OR *.timer)) AND (NOT (Image:(*\/dpkg OR *\/apt OR *\/apt\-get OR *\/rpm OR *\/dnf OR *\/yum OR *\/pacman OR *\/systemd OR *\/systemctl)))

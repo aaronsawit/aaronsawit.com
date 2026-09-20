@@ -1,0 +1,49 @@
+title: Systemd Unit Written Outside A Package Manager
+id: 5c2a9e10-7b34-4d8f-a6c1-3e9f0b2d4c77
+status: experimental
+description: >
+  A new .service or .timer unit appears in a systemd unit directory, written by a process that is not a
+  package manager or systemd itself. Service and timer units are the most common way to survive a reboot on
+  Linux. I write timers by hand on my own server, so the expected noise is an administrator's editor or
+  shell: few enough events to review each one.
+references:
+  - https://attack.mitre.org/techniques/T1543/002/
+  - https://attack.mitre.org/techniques/T1053/006/
+author: Aaron Sawit
+date: 2026-09-21
+tags:
+  - attack.persistence
+  - attack.privilege-escalation
+  - attack.t1543.002
+  - attack.t1053.006
+logsource:
+  product: linux
+  category: file_event
+detection:
+  selection_system_dir:
+    TargetFilename|startswith:
+      - '/etc/systemd/system/'
+      - '/usr/lib/systemd/system/'
+      - '/lib/systemd/system/'
+  selection_user_dir:
+    TargetFilename|contains: '/.config/systemd/user/'
+  selection_unit:
+    TargetFilename|endswith:
+      - '.service'
+      - '.timer'
+  filter_package_manager:
+    Image|endswith:
+      - '/dpkg'
+      - '/apt'
+      - '/apt-get'
+      - '/rpm'
+      - '/dnf'
+      - '/yum'
+      - '/pacman'
+      - '/systemd'
+      - '/systemctl'
+  condition: (selection_system_dir or selection_user_dir) and selection_unit and not filter_package_manager
+falsepositives:
+  - An administrator writing a unit by hand with an editor, cp or tee. Expected, and worth a look each time.
+  - Configuration management (Ansible, Puppet). Add its binary to the filter once it is known.
+level: medium

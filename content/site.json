@@ -90,16 +90,6 @@
       "name": "Exam-practice tutoring app",
       "what": "Student and teacher web app for primary school English, built with a partner who owns the backend. Hint ladders that fade as mastery grows, and a teacher view of every attempt. In development.",
       "href": "/#contact"
-    },
-    {
-      "name": "Futures trading bot",
-      "what": "Opening-range-breakout strategy with an LLM as the final filter, broker execution, and guard rails that enforce drawdown and position limits. Paper traded.",
-      "href": "/#contact"
-    },
-    {
-      "name": "Game library intake",
-      "what": "Identifies disc images by their magic bytes, converts the formats emulators refuse, and files everything where the front ends expect it.",
-      "href": "/writing/xemu-please-insert-an-xbox-disc/"
     }
   ],
   "fit": [

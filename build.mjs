@@ -80,7 +80,7 @@ const footer = `
 </footer>`;
 
 const FONTS = "https://fonts.googleapis.com/css2?family=Geist:wght@400..800&family=Geist+Mono:wght@400..600&display=swap";
-const page = ({ title, description, body, active = "", klass = "", canonical = "/" }) => `<!doctype html>
+const page = ({ title, description, body, active = "", klass = "", canonical = "/", scripts = [] }) => `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -110,6 +110,7 @@ ${body}
 </main>
 ${footer}
 <script src="/site.js?v=${ver("src/site.js")}" defer></script>
+${scripts.map((s) => `<script src="${s}?v=${ver("src/break/" + s.split("/").pop())}" defer></script>`).join("\n")}
 </body>
 </html>`;
 
@@ -365,6 +366,7 @@ write("ai/index.html", page({
   <p class="tagline">AI</p>
   <h1>I build with AI, and I put limits on it</h1>
   <p class="lede">${esc(ai.lede)}</p>
+  <p class="ai-play"><a class="btn btn-solid" href="/break/">Play "Break my bot" →</a> <span>a prompt-injection game: talk a chatbot into leaking its password across six real defences.</span></p>
 </section>
 <section class="wrap">
   <h2 class="list-head">Six rules</h2>
@@ -396,6 +398,46 @@ ${detections.map((d) => `
 </article>`).join("")}
 </section>
 <nav class="next wrap"><a href="/work/detection/"><span>Case study</span><strong>Detection tooling</strong></a></nav>` }));
+
+// ---------- break my bot (interactive) ----------
+write("break/index.html", page({
+  title: `Break my bot · ${site.name}`, active: "ai", canonical: "/break/", scripts: ["/break/client.js"],
+  description: "A prompt-injection game: talk a chatbot into leaking its password across six levels, each with a real defence. By Aaron Sawit.",
+  body: `
+<section class="doc-head wrap">
+  <p class="eyebrow">Interactive · prompt injection</p>
+  <h1>Break my bot</h1>
+  <p class="lede">A chatbot is guarding a password. Six levels, and each one adds a real defence — the same defences teams put around AI features at work. Talk the bot into leaking the password. Clear a level and I'll show you why the defence failed and what actually fixes it.</p>
+  <p class="bm-note">Nothing you type is stored. The bot runs on a small free model with a hard usage cap, so it will be brief and sometimes a bit dim. That is part of the fun.</p>
+</section>
+<section class="wrap bm-wrap">
+  <div id="game">
+    <div class="bm-head">
+      <div>
+        <p class="bm-levelname" id="bm-levelname">Level 1</p>
+        <div class="bm-dots" id="bm-dots" aria-hidden="true"></div>
+      </div>
+      <div class="bm-defences" id="bm-defences"></div>
+    </div>
+    <p class="bm-blurb" id="bm-blurb"></p>
+    <div class="bm-log" id="bm-log" aria-live="polite"></div>
+    <form class="bm-form" id="bm-form" autocomplete="off">
+      <input id="bm-input" class="bm-input" maxlength="600" placeholder="Say something to the bot…" aria-label="Message to the bot">
+      <button id="bm-send" class="btn btn-solid" type="submit">Send</button>
+    </form>
+    <form class="bm-guessform" id="bm-guessform" autocomplete="off">
+      <input id="bm-guess" class="bm-input" maxlength="40" placeholder="Think you have the password? Type it here" aria-label="Your password guess">
+      <button id="bm-guess-btn" class="btn" type="submit">Unlock</button>
+    </form>
+    <div class="bm-card" id="bm-card" hidden></div>
+  </div>
+</section>
+<section class="wrap bm-foot">
+  <p>This is a toy, but the point is serious. Prompt-level defences stack up and never become sound, because the secret is still in the model's context. I build the other kind: <a href="https://github.com/aaronsawit/llm-guardrail-tests">tested guardrails</a>, and <a href="/ai/">AI features with real limits in code around them</a>.</p>
+</section>`,
+}));
+fs.copyFileSync(path.join(ROOT, "src/break/client.js"), path.join(DIST, "break/client.js"));
+fs.copyFileSync(path.join(ROOT, "src/break/worker.js"), path.join(DIST, "_worker.js"));
 
 const cv = site.cv;
 write("cv/index.html", page({
@@ -431,7 +473,7 @@ const redirects = wpRaw.filter((p) => p.type === "post").map((p) => {
 write("_redirects", [...redirects, "/about /#about 301", "/about/ /#about 301", "/blog /writing/ 301", "/blog/ /writing/ 301"].join("\n") + "\n");
 write("_headers", "/*\n  X-Content-Type-Options: nosniff\n  X-Frame-Options: DENY\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  Content-Security-Policy: default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'\n");
 write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
-const urls = ["/", "/ai/", "/writing/", "/detections/", "/cv/", ...work.map((w) => `/work/${w.slug}/`), ...posts.map((p) => `/writing/${p.slug}/`)];
+const urls = ["/", "/ai/", "/break/", "/writing/", "/detections/", "/cv/", ...work.map((w) => `/work/${w.slug}/`), ...posts.map((p) => `/writing/${p.slug}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${site.url}${u}</loc></url>`).join("\n")}\n</urlset>\n`);
 write("rss.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>${esc(site.name)}: write-ups</title><link>${site.url}/writing/</link><description>${esc(site.description)}</description>\n${posts.map((p) => `<item><title>${esc(p.title)}</title><link>${site.url}/writing/${p.slug}/</link><guid>${site.url}/writing/${p.slug}/</guid><pubDate>${new Date(p.date).toUTCString()}</pubDate><description>${esc(p.summary)}</description></item>`).join("\n")}\n</channel></rss>\n`);
 

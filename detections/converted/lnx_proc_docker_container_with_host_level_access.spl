@@ -1,0 +1,1 @@
+Image IN ("*/docker", "*/podman", "*/nerdctl") CommandLine IN ("* run *", "* create *") CommandLine IN ("*--privileged*", "*/var/run/docker.sock*", "*--pid=host*", "*--pid host*", "*--net=host*", "*--network=host*", "*--network host*", "*--cap-add=SYS_ADMIN*", "*--cap-add SYS_ADMIN*", "*-v /:/*", "*--volume /:/*")

@@ -1,0 +1,1 @@
+CommandLine IN ("*curl *", "*wget *") CommandLine IN ("*| sh*", "*|sh*", "*| bash*", "*|bash*", "*| sudo sh*", "*| sudo bash*", "*| python*", "*|python*", "*bash <(curl*", "*sh <(curl*", "*bash -c \"$(curl*", "*sh -c \"$(curl*")

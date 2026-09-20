@@ -1,0 +1,43 @@
+title: Download Piped Straight Into A Shell
+id: 4c8b2e07-1f63-4a5d-9e72-d3f6b8a1c766
+status: experimental
+description: >
+  curl or wget output piped directly into a shell or interpreter. It is how a lot of legitimate software
+  tells you to install it, and it is also the most common first stage on a compromised Linux host, because the
+  payload never touches the disk. On a server that is already built, it should be rare enough to review.
+references:
+  - https://attack.mitre.org/techniques/T1059/004/
+  - https://attack.mitre.org/techniques/T1105/
+author: Aaron Sawit
+date: 2026-09-21
+tags:
+  - attack.execution
+  - attack.command-and-control
+  - attack.t1059.004
+  - attack.t1105
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  selection_fetch:
+    CommandLine|contains:
+      - 'curl '
+      - 'wget '
+  selection_pipe:
+    CommandLine|contains:
+      - '| sh'
+      - '|sh'
+      - '| bash'
+      - '|bash'
+      - '| sudo sh'
+      - '| sudo bash'
+      - '| python'
+      - '|python'
+      - 'bash <(curl'
+      - 'sh <(curl'
+      - 'bash -c "$(curl'
+      - 'sh -c "$(curl'
+  condition: selection_fetch and selection_pipe
+falsepositives:
+  - Installing software from a vendor's one-line installer. Legitimate, and still worth knowing about on a production host.
+level: medium

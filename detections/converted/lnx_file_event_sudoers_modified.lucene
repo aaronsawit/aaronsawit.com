@@ -1,0 +1,1 @@
+(TargetFilename:(\/etc\/sudoers OR \/etc\/sudoers.d\/*)) AND (NOT (Image:(*\/visudo OR *\/dpkg OR *\/apt OR *\/apt\-get OR *\/rpm OR *\/dnf OR *\/yum OR *\/cloud\-init)))

@@ -13,6 +13,18 @@ A rule that parses is not a rule that works. It can miss the case it was written
 | [SSH password brute force from one source](rules/lnx_sshd_failed_password.yml) | T1110.001 | sshd auth log | Sigma correlation rule, ported from [blue-team-ai](https://github.com/aaronsawit/blue-team-ai) |
 | [Client bypassing the filtering resolver with encrypted DNS](rules/dns_encrypted_dns_bypass_of_filtering_resolver.yml) | T1071.004, T1572 | DNS query log | One phone on my own network went silent in the resolver log. It was iCloud Private Relay. |
 | [Systemd unit written outside a package manager](rules/lnx_file_event_systemd_unit_written_outside_package_manager.yml) | T1543.002, T1053.006 | Linux file events (Sysmon for Linux, auditd) | I write service and timer units by hand on my own server, so I know what normal looks like: rare, and always an editor or a shell |
+| [Container started with host-level access](rules/lnx_proc_docker_container_with_host_level_access.yml) | T1610, T1611 | Linux process creation | I run 40+ containers. A few legitimately need the Docker socket or host network, and I know which. Anything else asking for it is the interesting event |
+| [SSH authorized_keys modified outside SSH tooling](rules/lnx_file_event_ssh_authorized_keys_modified.yml) | T1098.004 | Linux file events | The quietest way to keep access to a Linux host |
+| [Sudoers written outside visudo or a package manager](rules/lnx_file_event_sudoers_modified.yml) | T1548.003 | Linux file events | One line in `/etc/sudoers.d` is a permanent route to root |
+| [Download piped straight into a shell](rules/lnx_proc_download_piped_to_shell.yml) | T1059.004, T1105 | Linux process creation | `curl ... \| sh`: how installers work, and how most Linux first stages work |
+| [DNS query with a very long label](rules/dns_query_very_long_label_possible_tunnelling.yml) | T1071.004, T1048.003 | DNS query log | Data moved over DNS is packed into labels. People do not type 50-character hostnames |
+
+## ATT&CK coverage
+
+15 techniques across 10 rule files: [coverage/COVERAGE.md](coverage/COVERAGE.md). The same data as an
+[ATT&CK Navigator layer](coverage/attack-navigator-layer.json), which you can load at
+<https://mitre-attack.github.io/attack-navigator/>. Both are generated from the rules' own tags by
+`tools/coverage.py`, and CI fails if they are out of date, so the map cannot drift from the rules.
 
 ## Run the checks
 

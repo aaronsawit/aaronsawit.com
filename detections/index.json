@@ -85,5 +85,92 @@
    }
   ],
   "origin": "/work/homelab/"
+ },
+ {
+  "file": "lnx_proc_docker_container_with_host_level_access",
+  "title": "Container started with host-level access",
+  "why": "A container asks to be privileged, to mount the Docker socket, or to share the host's process or network namespace. Any of these turns code in a container into code on the host. I run 40+ containers and know which few legitimately need it.",
+  "source": "Linux process creation",
+  "level": "medium",
+  "checks": 7,
+  "techniques": [
+   {
+    "id": "T1610",
+    "name": "Deploy container"
+   },
+   {
+    "id": "T1611",
+    "name": "Escape to host"
+   }
+  ],
+  "origin": "/work/homelab/"
+ },
+ {
+  "file": "lnx_file_event_ssh_authorized_keys_modified",
+  "title": "SSH authorized_keys modified outside SSH tooling",
+  "why": "Adding a key is the quietest way to keep access to a Linux host: no password change, no new account, and it survives a reboot.",
+  "source": "Linux file events",
+  "level": "high",
+  "checks": 6,
+  "techniques": [
+   {
+    "id": "T1098.004",
+    "name": "Account manipulation: SSH authorized keys"
+   }
+  ],
+  "origin": "/work/detection/"
+ },
+ {
+  "file": "lnx_file_event_sudoers_modified",
+  "title": "Sudoers written outside visudo or a package manager",
+  "why": "One line in /etc/sudoers.d is a permanent route to root. Almost nothing legitimate writes there except visudo and package installs.",
+  "source": "Linux file events",
+  "level": "high",
+  "checks": 6,
+  "techniques": [
+   {
+    "id": "T1548.003",
+    "name": "Abuse elevation control: sudo and sudo caching"
+   }
+  ],
+  "origin": "/work/detection/"
+ },
+ {
+  "file": "lnx_proc_download_piped_to_shell",
+  "title": "Download piped straight into a shell",
+  "why": "curl piped into sh is how many installers work and how most Linux first stages work, because the payload never touches the disk. On a server that is already built it should be rare enough to review.",
+  "source": "Linux process creation",
+  "level": "medium",
+  "checks": 7,
+  "techniques": [
+   {
+    "id": "T1059.004",
+    "name": "Command and scripting interpreter: Unix shell"
+   },
+   {
+    "id": "T1105",
+    "name": "Ingress tool transfer"
+   }
+  ],
+  "origin": "/work/detection/"
+ },
+ {
+  "file": "dns_query_very_long_label_possible_tunnelling",
+  "title": "DNS query with a very long label",
+  "why": "Tools that move data over DNS pack it into labels of up to 63 characters. People do not type 50-character hostnames, so long labels are what tunnelling looks like in a resolver log.",
+  "source": "DNS query log",
+  "level": "medium",
+  "checks": 6,
+  "techniques": [
+   {
+    "id": "T1071.004",
+    "name": "Application layer protocol: DNS"
+   },
+   {
+    "id": "T1048.003",
+    "name": "Exfiltration over unencrypted non-C2 protocol"
+   }
+  ],
+  "origin": "/writing/iphone-bypassing-dns-filter-private-relay/"
  }
 ]

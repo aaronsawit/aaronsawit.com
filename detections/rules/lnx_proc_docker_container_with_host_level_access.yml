@@ -1,0 +1,47 @@
+title: Container Started With Host-Level Access
+id: 7e1d4b92-3c5a-4f80-9a27-b6c8d0e1f233
+status: experimental
+description: >
+  A container is started privileged, with the Docker socket mounted, in the host's process or network
+  namespace, or with the host's root filesystem mounted. Any of these turns "code running in a container"
+  into "code running on the host". On my own server a few services legitimately need one of these, and they
+  are known by name, so anything else is worth a look.
+references:
+  - https://attack.mitre.org/techniques/T1610/
+  - https://attack.mitre.org/techniques/T1611/
+author: Aaron Sawit
+date: 2026-09-21
+tags:
+  - attack.execution
+  - attack.privilege-escalation
+  - attack.t1610
+  - attack.t1611
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  selection_docker:
+    Image|endswith:
+      - '/docker'
+      - '/podman'
+      - '/nerdctl'
+    CommandLine|contains:
+      - ' run '
+      - ' create '
+  selection_risky:
+    CommandLine|contains:
+      - '--privileged'
+      - '/var/run/docker.sock'
+      - '--pid=host'
+      - '--pid host'
+      - '--net=host'
+      - '--network=host'
+      - '--network host'
+      - '--cap-add=SYS_ADMIN'
+      - '--cap-add SYS_ADMIN'
+      - '-v /:/'
+      - '--volume /:/'
+  condition: selection_docker and selection_risky
+falsepositives:
+  - Monitoring agents, reverse proxies and container managers that are designed to need the socket or host network. List them and filter by container image.
+level: medium

@@ -1,0 +1,35 @@
+title: Sudoers Configuration Written Outside Visudo Or A Package Manager
+id: 9a3e7c51-6b20-4d94-8f13-e5d1a0b4c655
+status: experimental
+description: >
+  /etc/sudoers or a file under /etc/sudoers.d is written by a process other than visudo or a package manager.
+  One line there ("user ALL=(ALL) NOPASSWD: ALL") is a permanent route to root.
+references:
+  - https://attack.mitre.org/techniques/T1548/003/
+author: Aaron Sawit
+date: 2026-09-21
+tags:
+  - attack.privilege-escalation
+  - attack.t1548.003
+logsource:
+  product: linux
+  category: file_event
+detection:
+  selection_file:
+    TargetFilename: '/etc/sudoers'
+  selection_dir:
+    TargetFilename|startswith: '/etc/sudoers.d/'
+  filter_expected:
+    Image|endswith:
+      - '/visudo'
+      - '/dpkg'
+      - '/apt'
+      - '/apt-get'
+      - '/rpm'
+      - '/dnf'
+      - '/yum'
+      - '/cloud-init'
+  condition: (selection_file or selection_dir) and not filter_expected
+falsepositives:
+  - Configuration management writing a drop-in file. Add its binary to the filter once known.
+level: high

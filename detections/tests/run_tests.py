@@ -3,7 +3,7 @@
 
 Every rule has events it must match and events it must not. A rule that parses is not a rule that works:
 this harness evaluates the detection logic itself, for the subset of Sigma these rules use
-(field maps, lists, the contains / endswith / startswith modifiers, and / or / not conditions,
+(field maps, lists, the contains / endswith / startswith / re / all modifiers, and / or / not conditions,
 and event_count correlations). Syntax is checked separately with `sigma check`.
 """
 import json, re, sys
@@ -19,7 +19,14 @@ def field_matches(event, key, expected):
         return False
     actual = str(event[name]).lower()
     values = expected if isinstance(expected, list) else [expected]
+    if "all" in mods:                       # every value must match, not just one
+        rest = "|".join([name] + [m for m in mods if m != "all"])
+        return all(field_matches(event, rest, v) for v in values)
     for v in values:
+        if "re" in mods:
+            if re.search(str(v), str(event[name])):
+                return True
+            continue
         v = str(v).lower()
         if "contains" in mods:
             ok = v in actual

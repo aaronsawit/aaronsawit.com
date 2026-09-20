@@ -47,6 +47,26 @@
   ],
   "also": [
     {
+      "name": "pdf-redaction-check",
+      "what": "Checks whether the redacted text in a PDF is actually gone. Finds words still sitting under black boxes, including boxes stamped on as overlays, and redaction marks that were never applied. Built after it caught a real document my first version missed.",
+      "href": "https://github.com/aaronsawit/pdf-redaction-check"
+    },
+    {
+      "name": "llm-guardrail-tests",
+      "what": "Regression tests for the guardrails on your own AI feature: 20 known prompt-injection patterns, graded deterministically with random markers and a canary, no judge model, ready for CI.",
+      "href": "https://github.com/aaronsawit/llm-guardrail-tests"
+    },
+    {
+      "name": "model-diff-audit",
+      "what": "Bit-level comparison of an AI model against the base it claims to come from, separating ordinary fine-tuning from tampering. On a real tampered model it found the 90 edited rows out of 151,936.",
+      "href": "https://github.com/aaronsawit/model-diff-audit"
+    },
+    {
+      "name": "toolcall-probe",
+      "what": "Asks a local model endpoint directly whether it really calls tools or only describes them, and says which layer is at fault.",
+      "href": "https://github.com/aaronsawit/toolcall-probe"
+    },
+    {
       "name": "cctokens",
       "what": "Shows where Claude Code tokens go: usage and API-equivalent cost by day, model and project. One Python file, no dependencies, nothing leaves the machine. Counts each message once, which the logs do not.",
       "href": "https://github.com/aaronsawit/cctokens"

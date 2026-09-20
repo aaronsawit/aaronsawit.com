@@ -1,0 +1,1 @@
+((Image:(*\/docker OR *\/podman OR *\/nerdctl)) AND (CommandLine:(*\ run\ * OR *\ create\ *))) AND (CommandLine:(*\-\-privileged* OR *\/var\/run\/docker.sock* OR *\-\-pid\=host* OR *\-\-pid\ host* OR *\-\-net\=host* OR *\-\-network\=host* OR *\-\-network\ host* OR *\-\-cap\-add\=SYS_ADMIN* OR *\-\-cap\-add\ SYS_ADMIN* OR *\-v\ \/\:\/* OR *\-\-volume\ \/\:\/*))

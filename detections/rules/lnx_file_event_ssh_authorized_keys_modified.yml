@@ -1,0 +1,32 @@
+title: SSH Authorized Keys Modified By Something Other Than SSH Tooling
+id: 2f9c6a18-8d47-4e3b-b150-c4a7e9d2f344
+status: experimental
+description: >
+  An authorized_keys file is written by a process that is not part of the normal key-management path. Adding a
+  key is the quietest way to keep access to a Linux host: no password changes, no new account, and it survives
+  a reboot.
+references:
+  - https://attack.mitre.org/techniques/T1098/004/
+author: Aaron Sawit
+date: 2026-09-21
+tags:
+  - attack.persistence
+  - attack.t1098.004
+logsource:
+  product: linux
+  category: file_event
+detection:
+  selection:
+    TargetFilename|endswith:
+      - '/.ssh/authorized_keys'
+      - '/.ssh/authorized_keys2'
+  filter_expected:
+    Image|endswith:
+      - '/ssh-copy-id'
+      - '/sshd'
+      - '/cloud-init'
+      - '/ansible'
+  condition: selection and not filter_expected
+falsepositives:
+  - An administrator adding a key by hand with an editor or a shell redirect. Expected, rare, and worth confirming with the person.
+level: high

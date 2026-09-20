@@ -1,0 +1,1 @@
+TargetFilename IN ("/etc/sudoers", "/etc/sudoers.d/*") NOT (Image IN ("*/visudo", "*/dpkg", "*/apt", "*/apt-get", "*/rpm", "*/dnf", "*/yum", "*/cloud-init"))

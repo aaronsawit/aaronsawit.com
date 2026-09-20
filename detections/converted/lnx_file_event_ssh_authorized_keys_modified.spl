@@ -1,0 +1,1 @@
+TargetFilename IN ("*/.ssh/authorized_keys", "*/.ssh/authorized_keys2") NOT (Image IN ("*/ssh-copy-id", "*/sshd", "*/cloud-init", "*/ansible"))

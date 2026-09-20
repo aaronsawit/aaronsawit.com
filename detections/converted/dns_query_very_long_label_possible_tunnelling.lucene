@@ -1,0 +1,1 @@
+query:/(^|\.)[A-Za-z0-9_-]{50,63}\./ AND (NOT (query:(*.in\-addr.arpa OR *.ip6.arpa OR *._domainkey. OR *.cloudfront.net OR *.amazonaws.com)))

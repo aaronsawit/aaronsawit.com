@@ -1,0 +1,1 @@
+(CommandLine:(*curl\ * OR *wget\ *)) AND (CommandLine:(*\|\ sh* OR *\|sh* OR *\|\ bash* OR *\|bash* OR *\|\ sudo\ sh* OR *\|\ sudo\ bash* OR *\|\ python* OR *\|python* OR *bash\ \<\(curl* OR *sh\ \<\(curl* OR *bash\ \-c\ \"$\(curl* OR *sh\ \-c\ \"$\(curl*))

@@ -1,0 +1,2 @@
+NOT (query IN ("*.in-addr.arpa", "*.ip6.arpa", "*._domainkey.", "*.cloudfront.net", "*.amazonaws.com"))
+| regex query="(^|\\.)[A-Za-z0-9_-]{50,63}\\."

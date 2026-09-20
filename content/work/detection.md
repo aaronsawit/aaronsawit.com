@@ -9,7 +9,7 @@ link: https://github.com/aaronsawit
 visual: detection
 stack: ["Python", "pytest", "RFC 5424 syslog", "IOC matching", "GeoIP", "Snort", "iptables", "OpenPhish / URLhaus"]
 short: A log triage pipeline, a phishing link checker and tested Sigma rules, all public with passing builds.
-metrics: ["5 Sigma rules, ATT&CK mapped, green in CI","36 offline tests on the triage tool","8 public repositories with passing builds"]
+metrics: ["10 Sigma rules across 15 ATT&CK techniques, green in CI","36 offline tests on the triage tool","12 public repositories with passing builds"]
 ---
 
 ## Log triage: rules first, model second

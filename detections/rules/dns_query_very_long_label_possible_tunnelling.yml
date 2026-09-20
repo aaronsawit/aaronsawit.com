@@ -1,0 +1,33 @@
+title: DNS Query With A Very Long Label
+id: 6d5f1a83-2e94-4c76-a041-f7b9c3e5d877
+status: experimental
+description: >
+  A DNS name containing a single label of 50 or more characters. Real hostnames are short because people type
+  them. Tools that move data over DNS pack it into labels, which can be up to 63 characters, so long labels
+  are what tunnelling and DNS exfiltration look like in a resolver log.
+references:
+  - https://attack.mitre.org/techniques/T1071/004/
+  - https://attack.mitre.org/techniques/T1048/003/
+author: Aaron Sawit
+date: 2026-09-21
+tags:
+  - attack.command-and-control
+  - attack.exfiltration
+  - attack.t1071.004
+  - attack.t1048.003
+logsource:
+  category: dns
+detection:
+  selection:
+    query|re: '(^|\.)[A-Za-z0-9_-]{50,63}\.'
+  filter_known_long:
+    query|endswith:
+      - '.in-addr.arpa'
+      - '.ip6.arpa'
+      - '._domainkey.'
+      - '.cloudfront.net'
+      - '.amazonaws.com'
+  condition: selection and not filter_known_long
+falsepositives:
+  - Some CDNs, DKIM lookups and anti-virus reputation services use long generated labels. Add the domains you see to the filter.
+level: medium

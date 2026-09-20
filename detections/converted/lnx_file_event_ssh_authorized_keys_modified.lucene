@@ -1,0 +1,1 @@
+(TargetFilename:(*\/.ssh\/authorized_keys OR *\/.ssh\/authorized_keys2)) AND (NOT (Image:(*\/ssh\-copy\-id OR *\/sshd OR *\/cloud\-init OR *\/ansible)))

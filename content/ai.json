@@ -37,6 +37,15 @@
       "proofHref": "/writing/cloudflare-kv-cannot-rate-limit/"
     },
     {
+      "title": "Open-source tools for AI security",
+      "where": "GitHub, open source",
+      "href": "https://github.com/aaronsawit/llm-guardrail-tests",
+      "what": "Three small tools that came out of my own AI work: regression tests for prompt-injection defences, a bit-level audit of a model file against its claimed base, and a probe that tells you whether a model really calls tools.",
+      "guard": "All three grade with facts, not opinions: a random token either came back or it did not, a bit either changed or it did not. None of them needs a second model to judge the first. Each states its limits in the README, including the case the model audit cannot see.",
+      "proof": "Code and passing tests on GitHub",
+      "proofHref": "https://github.com/aaronsawit/model-diff-audit"
+    },
+    {
       "title": "An LLM in a security pipeline",
       "where": "blue-team-ai, open source",
       "href": "/work/detection/",

@@ -18,3 +18,7 @@ jobs:
           for f in rules/*.yml; do
             sigma convert -t splunk --without-pipeline "$f" > /dev/null
           done
+      - name: Coverage map matches the rules
+        run: |
+          python tools/coverage.py
+          git diff --exit-code coverage/

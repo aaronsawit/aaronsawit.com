@@ -3,10 +3,13 @@
 // Content: content/posts/*.md, content/work/*.md, wp-export/content.json (the old WordPress posts).
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import { marked } from "marked";
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const DIST = path.join(ROOT, "dist");
+// short content hash so browsers fetch a changed stylesheet or script at once instead of after the cache expires
+const ver = (f) => crypto.createHash("sha1").update(fs.readFileSync(path.join(ROOT, f))).digest("hex").slice(0, 8);
 const site = JSON.parse(fs.readFileSync(path.join(ROOT, "content/site.json"), "utf8"));
 
 // ---------- helpers ----------
@@ -97,7 +100,7 @@ const page = ({ title, description, body, active = "", klass = "", canonical = "
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="${FONTS}" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=${ver("src/styles.css")}">
 </head>
 <body class="${klass}">
 <a class="skip" href="#main">Skip to content</a>
@@ -106,7 +109,7 @@ ${nav(active)}
 ${body}
 </main>
 ${footer}
-<script src="/site.js" defer></script>
+<script src="/site.js?v=${ver("src/site.js")}" defer></script>
 </body>
 </html>`;
 

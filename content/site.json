@@ -47,6 +47,21 @@
   ],
   "also": [
     {
+      "name": "cctokens",
+      "what": "Shows where Claude Code tokens go: usage and API-equivalent cost by day, model and project. One Python file, no dependencies, nothing leaves the machine. Counts each message once, which the logs do not.",
+      "href": "https://github.com/aaronsawit/cctokens"
+    },
+    {
+      "name": "docker-gpu-reload-check",
+      "what": "Finds containers that will silently lose their NVIDIA GPU on the next systemd reload, and prints the fix. Read-only, tested against my own two-GPU server.",
+      "href": "https://github.com/aaronsawit/docker-gpu-reload-check"
+    },
+    {
+      "name": "private-relay-block",
+      "what": "Puts Apple devices back on the network's DNS filter by blocking iCloud Private Relay the way Apple documents, plus the cached relay addresses. Dry-run and clean undo.",
+      "href": "https://github.com/aaronsawit/private-relay-block"
+    },
+    {
       "name": "disc-image-id",
       "what": "Identifies Xbox, PS1 and PS2 disc images by signature instead of file extension, and converts the full Xbox dumps that the xemu emulator rejects. Tested, open source.",
       "href": "https://github.com/aaronsawit/disc-image-id"

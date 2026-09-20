@@ -27,6 +27,8 @@ With nothing plugged in, the driver creates no screen. I generate a synthetic ED
 
 PlayStation 2 emulation failed with "Failed to initialize GS". The cause was one layer down: `VK: Failed to find an acceptable present queue`. Vulkan cannot present to this headless display, and the emulator's automatic renderer chooses Vulkan. Forcing OpenGL in each emulator's config fixed all of them.
 
+The working config files, the EDID generator and the systemd units are on GitHub: [headless-sunshine-nvidia](https://github.com/aaronsawit/headless-sunshine-nvidia).
+
 ## Result
 
 1080p at 60 frames a second, hardware encoded, to a laptop, a phone and the living room TV. I chose 1080p over 1440p in the end, because the same card also transcodes video for the rest of the family.

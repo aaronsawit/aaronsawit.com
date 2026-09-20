@@ -35,6 +35,8 @@ That is iCloud Private Relay. With it on, the phone resolves names over Obliviou
 
 After all that, the relay connections were being refused and the phone still made new connections with no visible lookups. The remaining cause was on the phone: the mesh app's "use these DNS settings" toggle had been switched off, so it was using the carrier's resolver directly. No server-side rule can fix a client that never sends you the question.
 
+The blocking script, with a dry-run mode and a clean undo, is on GitHub: [private-relay-block](https://github.com/aaronsawit/private-relay-block).
+
 ## What I took from it
 
 Absence of logs is data. "The filter is broken" and "the filter is not being consulted" look identical from the dashboard and completely different in a packet capture, so I captured before I changed anything.

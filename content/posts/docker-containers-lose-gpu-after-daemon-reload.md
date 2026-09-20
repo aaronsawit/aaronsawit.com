@@ -49,6 +49,8 @@ sudo systemctl daemon-reload
 docker exec jellyfin nvidia-smi -L     # still lists the GPUs
 ```
 
+There is now a small read-only checker that lists which of your GPU containers would survive a reload, and prints the `devices:` block for your host: [docker-gpu-reload-check on GitHub](https://github.com/aaronsawit/docker-gpu-reload-check).
+
 ## What I took from it
 
 The failing component and the cause were in different layers, and the only link between them was a timestamp. I now treat "what else happened at that minute" as the first question, and I test a fix by repeating the trigger, not by checking that the symptom went away.

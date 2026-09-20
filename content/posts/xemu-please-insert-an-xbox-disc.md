@@ -30,6 +30,8 @@ dd if=game.iso bs=65536 skip=1    count=1 | grep -a 'MICROSOFT\*XBOX\*MEDIA'   #
 
 My intake script now identifies every image by its magic bytes and size, not by its file extension. PlayStation 2 and Xbox images both arrive as `.iso` and have to go to different places. Full Xbox dumps are converted on the way in. Archives that contain a folder named `something.iso` are handled too, because one of mine did.
 
+The identification part is now a small standalone tool with tests: [disc-image-id on GitHub](https://github.com/aaronsawit/disc-image-id).
+
 ## What I took from it
 
 The error message was true. The disc really was not what the emulator considers an Xbox disc. When a tool rejects input that looks valid, I open the input in a hex viewer before I open the tool's issue tracker.

@@ -47,6 +47,11 @@
   ],
   "also": [
     {
+      "name": "disc-image-id",
+      "what": "Identifies Xbox, PS1 and PS2 disc images by signature instead of file extension, and converts the full Xbox dumps that the xemu emulator rejects. Tested, open source.",
+      "href": "https://github.com/aaronsawit/disc-image-id"
+    },
+    {
       "name": "Exam-practice tutoring app",
       "what": "Student and teacher web app for primary school English, built with a partner who owns the backend. Hint ladders that fade as mastery grows, and a teacher view of every attempt. In development.",
       "href": "/#contact"

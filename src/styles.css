@@ -6,7 +6,7 @@
   color-scheme: dark;
   --bg: #0b0c10; --bg2: #101218; --card: #14161d; --card2: #1b1e27; --line: #262a35;
   --text: #eceef2; --muted: #9aa1b0; --dim: #626a7a;
-  --lime: #c6ff3d; --pink: #ff4fa3; --cyan: #3df2ff; --amber: #ffb020; --violet: #8b7bff; --green: #3dff9a; --ink: #0e0d17;
+  --lime: #c6ff3d; --pink: #4da3ff; --cyan: #3df2ff; --amber: #ffb020; --violet: #4da3ff; --green: #3dff9a; --ink: #0e0d17;
   --pop: 4px 4px 0 var(--pink); --ease: cubic-bezier(.16, 1, .3, 1);
   --display: "Geist", system-ui, -apple-system, sans-serif;
   --body: "Geist", system-ui, -apple-system, sans-serif;

@@ -1,0 +1,1 @@
+ImageLoaded IN ("*\\wininet.dll", "*\\version.dll", "*\\dbghelp.dll", "*\\winhttp.dll", "*\\cryptbase.dll", "*\\userenv.dll") ImageLoaded IN ("*\\Users\\*", "*\\ProgramData\\*", "*\\Windows\\Temp\\*", "*\\Downloads\\*") NOT (Signed="true" Signature="Microsoft Windows")

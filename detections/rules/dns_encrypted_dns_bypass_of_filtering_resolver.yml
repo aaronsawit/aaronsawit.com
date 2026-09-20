@@ -1,0 +1,40 @@
+title: Client Bypassing the Filtering Resolver With Encrypted DNS or a Relay
+id: 4e1a7b93-5d20-4c8e-9f36-8b2c0d1e9f77
+status: experimental
+description: >
+  A client on a network with a mandatory filtering resolver looks up a public DNS-over-HTTPS
+  endpoint or an iCloud Private Relay bootstrap host. Once that lookup succeeds the client's
+  remaining DNS leaves the network encrypted, and the resolver's logs and blocklists stop applying
+  to it. Written after one phone on my own network went silent in the resolver log.
+references:
+  - https://attack.mitre.org/techniques/T1071/004/
+  - https://attack.mitre.org/techniques/T1572/
+  - https://developer.apple.com/support/prepare-your-network-for-icloud-private-relay/
+  - https://aaronsawit.com/writing/iphone-bypassing-dns-filter-private-relay/
+author: Aaron Sawit
+date: 2026-09-20
+tags:
+  - attack.command-and-control
+  - attack.t1071.004
+  - attack.t1572
+logsource:
+  category: dns
+detection:
+  selection:
+    query|endswith:
+      - 'mask.icloud.com'
+      - 'mask-h2.icloud.com'
+      - 'dns.google'
+      - 'cloudflare-dns.com'
+      - 'one.one.one.one'
+      - 'dns.quad9.net'
+      - 'doh.opendns.com'
+      - 'dns.nextdns.io'
+  filter_resolver_itself:
+    src_ip:
+      - '127.0.0.1'
+      - '172.20.0.2'
+  condition: selection and not filter_resolver_itself
+falsepositives:
+  - Personal devices with Private Relay enabled. On a home or guest network this is a visibility signal, not an incident.
+level: low

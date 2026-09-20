@@ -1,0 +1,18 @@
+{
+  "name": "aaronsawit-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs && npx --yes serve dist -l 4321"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "marked": "^14.1.4"
+  },
+  "type": "module",
+  "private": true
+}

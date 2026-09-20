@@ -1,0 +1,10 @@
+[
+  { "file": "win_sysmon_dll_sideload_system_dll_user_path", "title": "System DLL loaded from a user-writable path", "why": "DLL search-order hijacking. Written from a Sysmon lab where a copied calc.exe loaded a planted WININET.dll.", "source": "Sysmon event 7", "level": "high", "checks": 4,
+    "techniques": [{ "id": "T1574.001", "name": "Hijack execution flow: DLL" }], "origin": "/writing/hunting-dll-hijacking-with-sysmon/" },
+  { "file": "win_sysmon_unmanaged_powershell_clr_load", "title": ".NET runtime loaded by a process that is not a .NET host", "why": "Unmanaged PowerShell: the CLR injected into a native process so PowerShell runs with no powershell.exe in the process log.", "source": "Sysmon event 7", "level": "high", "checks": 3,
+    "techniques": [{ "id": "T1059.001", "name": "PowerShell" }, { "id": "T1055", "name": "Process injection" }], "origin": "/writing/hunting-dll-hijacking-with-sysmon/" },
+  { "file": "lnx_sshd_failed_password", "title": "SSH password brute force from one source", "why": "Ten failed passwords from one address in five minutes, as a Sigma correlation rule. Ported from my log triage tool.", "source": "sshd auth log", "level": "medium", "checks": 2,
+    "techniques": [{ "id": "T1110.001", "name": "Password guessing" }], "origin": "/work/detection/" },
+  { "file": "dns_encrypted_dns_bypass_of_filtering_resolver", "title": "Client bypassing the filtering resolver with encrypted DNS", "why": "A device looks up a DNS-over-HTTPS or Private Relay bootstrap host, after which the resolver stops seeing it. Written after it happened on my own network.", "source": "DNS query log", "level": "low", "checks": 4,
+    "techniques": [{ "id": "T1071.004", "name": "Application layer protocol: DNS" }, { "id": "T1572", "name": "Protocol tunneling" }], "origin": "/writing/iphone-bypassing-dns-filter-private-relay/" }
+]

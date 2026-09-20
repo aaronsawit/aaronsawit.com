@@ -1,0 +1,41 @@
+title: System DLL Loaded From a User-Writable Path
+id: 6f2b1d0a-7c1e-4a53-9a57-2f1d3c8e4b10
+status: experimental
+description: >
+  Detects a well-known Windows system DLL being loaded from a user-writable directory instead of
+  System32 or SysWOW64. This is the footprint of DLL search-order hijacking, for example a copy of
+  calc.exe on the Desktop loading a planted WININET.dll that sits beside it.
+references:
+  - https://attack.mitre.org/techniques/T1574/001/
+  - https://aaronsawit.com/writing/hunting-dll-hijacking-with-sysmon/
+author: Aaron Sawit
+date: 2026-09-20
+tags:
+  - attack.stealth
+  - attack.execution
+  - attack.t1574.001
+logsource:
+  product: windows
+  category: image_load
+detection:
+  selection_dll:
+    ImageLoaded|endswith:
+      - '\wininet.dll'
+      - '\version.dll'
+      - '\dbghelp.dll'
+      - '\winhttp.dll'
+      - '\cryptbase.dll'
+      - '\userenv.dll'
+  selection_path:
+    ImageLoaded|contains:
+      - '\Users\'
+      - '\ProgramData\'
+      - '\Windows\Temp\'
+      - '\Downloads\'
+  filter_signed_microsoft:
+    Signed: 'true'
+    Signature: 'Microsoft Windows'
+  condition: selection_dll and selection_path and not filter_signed_microsoft
+falsepositives:
+  - Portable applications that ship their own copy of a redistributable DLL. Tune by Image path.
+level: high

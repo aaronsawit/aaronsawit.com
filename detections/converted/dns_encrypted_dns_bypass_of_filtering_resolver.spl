@@ -1,0 +1,1 @@
+query IN ("*mask.icloud.com", "*mask-h2.icloud.com", "*dns.google", "*cloudflare-dns.com", "*one.one.one.one", "*dns.quad9.net", "*doh.opendns.com", "*dns.nextdns.io") NOT (src_ip IN ("127.0.0.1", "172.20.0.2"))

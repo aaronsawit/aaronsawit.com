@@ -1,0 +1,103 @@
+{
+  "lede": "I use AI every day and I do not trust it by default. Everything here runs with a limit, a test or a human check around the model, because that is the part most AI projects skip.",
+  "rules": [
+    [
+      "Rules first, model second",
+      "Anything that can be decided by plain code is decided by plain code. The model only gets a vote on what is left."
+    ],
+    [
+      "Caps live in code",
+      "Cost, rate and risk limits are enforced outside the model, where a clever prompt cannot talk its way past them."
+    ],
+    [
+      "Strict output or nothing",
+      "The model answers in one fixed format. A reply in any other shape is thrown away, never guessed at."
+    ],
+    [
+      "Test with the model faked",
+      "The AI client is replaced in tests, so parsing, refusal and fallback paths are proven offline, with no key and no network."
+    ],
+    [
+      "Measure before believing",
+      "Benchmarks and logs, not vibes. Negative results get written down too."
+    ],
+    [
+      "A person owns the result",
+      "Agents do the repeatable work. I set the bar, review the output and carry the blame."
+    ]
+  ],
+  "projects": [
+    {
+      "title": "AI inside a free product for kids",
+      "where": "Versed",
+      "href": "/work/versed/",
+      "what": "A capped AI helper in Versed Study and AI-built flashcard decks in Versed Learn, in tools used by students.",
+      "guard": "Per-visitor and per-day limits enforced in a Durable Object after I proved a KV counter could not hold a rate limit. Deck generation is costed at about 3 cents a deck, so the free tier has a real number behind it. No user photo uploads on public content, and chat runs through a word filter with reports.",
+      "proof": "Write-up: the rate limit that did not limit",
+      "proofHref": "/writing/cloudflare-kv-cannot-rate-limit/"
+    },
+    {
+      "title": "An LLM in a security pipeline",
+      "where": "blue-team-ai, open source",
+      "href": "/work/detection/",
+      "what": "Syslog triage where detection rules and threat-intel matches run first and a language model classifies only what the rules could not settle.",
+      "guard": "Temperature zero, one fixed answer format, off-format replies discarded. If the API is down the run falls back to the rule results instead of failing. 36 offline tests with the model client faked.",
+      "proof": "Code and passing tests on GitHub",
+      "proofHref": "https://github.com/aaronsawit/blue-team-ai"
+    },
+    {
+      "title": "Running large models on my own hardware",
+      "where": "Home server, 2x GTX 1080 Ti",
+      "href": "/work/local-ai/",
+      "what": "A 35-billion-parameter model served locally to a chat interface and an agent workspace, on nine-year-old GPUs that current toolkits have dropped.",
+      "guard": "46 to 71 tokens a second from measured changes only. A 48K context passed every normal check and then crashed mid-generation, so I now ship only configurations that finish a run at full depth. A script frees GPU memory when a game starts.",
+      "proof": "Write-up: the benchmarks, including what made it worse",
+      "proofHref": "/writing/llama-cpp-vs-ollama-on-pascal/"
+    },
+    {
+      "title": "A national CTF with AI as a teammate",
+      "where": "CSIT TISC 2026",
+      "href": "/writing/tisc-2026-writeup/",
+      "what": "TISC is Singapore's yearly individual capture-the-flag, ten levels that get harder as you go. The 2026 rules allowed AI tools, on the condition that you can explain everything they did. I only started on the final day, and cleared four levels before it closed.",
+      "guard": "Several challenges planted fake answers addressed to AI agents, so everything a challenge said was treated as untrusted input and none of the decoys were submitted. I kept a notes file per level in my own words, because a step I cannot explain is a step I do not understand yet.",
+      "proof": "Read my write-up",
+      "proofHref": "/writing/tisc-2026-writeup/"
+    },
+    {
+      "title": "Debugging an agent that talked instead of acting",
+      "where": "Self-hosted agent workspace",
+      "href": "/writing/agent-narrates-instead-of-calling-tools/",
+      "what": "My local AI agent kept announcing which tools it would use and then did nothing.",
+      "guard": "I tested all seven models against a raw tool-call request on both API paths before touching anything. Every model passed, so the model was not the problem. The causes were two layers up: a hidden text-based tool-calling mode, and tool definitions silently cut off by a context-size mismatch.",
+      "proof": "Write-up: test the layers before theorising",
+      "proofHref": "/writing/agent-narrates-instead-of-calling-tools/"
+    },
+    {
+      "title": "An LLM as a bounded decision-maker",
+      "where": "Futures trading bot, paper traded",
+      "href": "/#side",
+      "what": "An opening-range-breakout strategy where code filters the setups and a language model gives the final yes or no.",
+      "guard": "Drawdown, daily loss and position limits are enforced in code whatever the model says. One trade a day. A cooldown stops repeat calls unless the market has materially moved, which also cut the API bill. Every decision is logged and reviewed twice a week by a separate analysis run.",
+      "proof": "Ask me about it",
+      "proofHref": "/#contact"
+    },
+    {
+      "title": "Agents doing real weekly work",
+      "where": "Versed content pipeline",
+      "href": "/work/versed/",
+      "what": "A scheduled agent pipeline that researches, drafts and builds a week of educational content for Versed, then publishes a review page.",
+      "guard": "Repeatable steps are scripts run by a cheap model. The expensive model is used once, for writing. Every research citation is verified against a literature database before a deck can ship. Hard rules: no invented users, numbers or quotes.",
+      "proof": "See the products it supports",
+      "proofHref": "https://versedapps.com"
+    },
+    {
+      "title": "Building with AI coding agents",
+      "where": "How this site and Versed get made",
+      "href": "/#quests",
+      "what": "I direct AI coding agents the way I would run a small team: written specs, persistent project notes, review, and tests that have to pass in public.",
+      "guard": "Nothing ships on the agent's say-so. Claims on this site were checked against the real repositories, which is how five stale tests and one detector that did not do what its README said got found and fixed.",
+      "proof": "The repositories, with green builds",
+      "proofHref": "https://github.com/aaronsawit"
+    }
+  ]
+}

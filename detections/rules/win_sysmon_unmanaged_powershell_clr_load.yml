@@ -1,0 +1,36 @@
+title: .NET Runtime Loaded by a Process That Is Not a .NET Host
+id: 0c7a9e52-3b64-4d0f-8a21-5e9d1f6b7c33
+status: experimental
+description: >
+  Detects clr.dll or clrjit.dll being loaded by a native Windows binary that has no reason to host
+  the .NET runtime. Injecting the CLR into another process is how "unmanaged PowerShell" runs
+  PowerShell code without powershell.exe appearing in process logs.
+references:
+  - https://attack.mitre.org/techniques/T1059/001/
+  - https://attack.mitre.org/techniques/T1055/
+author: Aaron Sawit
+date: 2026-09-20
+tags:
+  - attack.execution
+  - attack.stealth
+  - attack.t1059.001
+  - attack.t1055
+logsource:
+  product: windows
+  category: image_load
+detection:
+  selection:
+    ImageLoaded|endswith:
+      - '\clr.dll'
+      - '\clrjit.dll'
+    Image|endswith:
+      - '\spoolsv.exe'
+      - '\notepad.exe'
+      - '\calc.exe'
+      - '\rundll32.exe'
+      - '\svchost.exe'
+      - '\lsass.exe'
+  condition: selection
+falsepositives:
+  - rundll32.exe legitimately hosting a managed component. Baseline first, then exclude by command line.
+level: high

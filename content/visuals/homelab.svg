@@ -1,0 +1,20 @@
+<svg class="diagram" viewBox="0 0 640 400" role="img" aria-label="Architecture: phone and laptop reach one server over a WireGuard mesh; the server runs DNS filtering, apps, media, game streaming and local AI; nothing is exposed to the public internet.">
+  <rect class="box" x="24" y="40" width="130" height="56" rx="4"/><text x="40" y="64">phone</text><text class="dim" x="40" y="82">anywhere</text>
+  <rect class="box" x="24" y="120" width="130" height="56" rx="4"/><text x="40" y="144">laptop</text><text class="dim" x="40" y="162">home or away</text>
+  <rect class="box" x="24" y="200" width="130" height="56" rx="4"/><text x="40" y="224">TV box</text><text class="dim" x="40" y="242">living room</text>
+  <path class="wire" d="M154 68 H200 V190 H236"/><path class="wire" d="M154 148 H200"/><path class="wire" d="M154 228 H200 V190"/>
+  <text class="dim" x="164" y="30">WireGuard, end to end</text>
+  <rect class="box box-key" x="236" y="36" width="380" height="308" rx="5"/>
+  <text class="on-key big" x="256" y="70">one server</text><text class="on-key" x="256" y="90">2017 gaming PC · 2 GPUs · 40+ apps</text>
+  <g>
+    <rect class="box" x="256" y="108" width="164" height="48" rx="3"/><text x="268" y="128">DNS filter</text><text class="dim" x="268" y="145">for every device</text>
+    <rect class="box" x="432" y="108" width="164" height="48" rx="3"/><text x="444" y="128">VPN exit node</text><text class="dim" x="444" y="145">fails closed</text>
+    <rect class="box" x="256" y="166" width="164" height="48" rx="3"/><text x="268" y="186">photos · passwords</text><text class="dim" x="268" y="203">documents · recipes</text>
+    <rect class="box" x="432" y="166" width="164" height="48" rx="3"/><text x="444" y="186">media server</text><text class="dim" x="444" y="203">GPU transcoding</text>
+    <rect class="box" x="256" y="224" width="164" height="48" rx="3"/><text x="268" y="244">game streaming</text><text class="dim" x="268" y="261">headless 1080p60</text>
+    <rect class="box" x="432" y="224" width="164" height="48" rx="3"/><text x="444" y="244">local LLMs</text><text class="dim" x="444" y="261">across both GPUs</text>
+    <rect class="box" x="256" y="282" width="340" height="44" rx="3"/><text x="268" y="301">backups · uptime checks · alerts</text><text class="dim" x="268" y="317">rebuilt from one folder</text>
+  </g>
+  <rect class="bar-signal" x="24" y="300" width="130" height="44" rx="4"/><text x="36" y="319" class="on-signal">public internet</text><text x="36" y="335" class="on-signal">0 open ports</text>
+  <path class="wire" d="M154 322 H226" stroke-dasharray="4 5"/><text class="dim" x="176" y="314">blocked</text>
+</svg>

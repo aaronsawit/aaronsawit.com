@@ -1,0 +1,1 @@
+(query:(*mask.icloud.com OR *mask\-h2.icloud.com OR *dns.google OR *cloudflare\-dns.com OR *one.one.one.one OR *dns.quad9.net OR *doh.opendns.com OR *dns.nextdns.io)) AND (NOT (src_ip:(127.0.0.1 OR 172.20.0.2)))

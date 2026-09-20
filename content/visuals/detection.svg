@@ -1,0 +1,14 @@
+<svg class="diagram" viewBox="0 0 640 400" role="img" aria-label="Pipeline: syslog is parsed, run through deterministic rules, enriched with GeoIP and indicator context, then classified by a language model whose output is strictly parsed. Rules decide what is certain; the model votes only on the rest.">
+  <text class="big" x="24" y="44">Rules decide. The model votes on the rest.</text>
+  <rect class="box" x="24" y="84" width="128" height="72" rx="4"/><text x="38" y="112">1 parse</text><text class="dim" x="38" y="132">RFC 5424</text><text class="dim" x="38" y="147">named errors</text>
+  <rect class="box box-key" x="178" y="84" width="128" height="72" rx="4"/><text class="on-key" x="192" y="112">2 detect</text><text class="on-key" x="192" y="132">brute force · cron</text><text class="on-key" x="192" y="147">IOC matches</text>
+  <rect class="box" x="332" y="84" width="128" height="72" rx="4"/><text x="346" y="112">3 enrich</text><text class="dim" x="346" y="132">GeoIP</text><text class="dim" x="346" y="147">indicator context</text>
+  <rect class="box" x="486" y="84" width="130" height="72" rx="4"/><text x="500" y="112">4 classify</text><text class="dim" x="500" y="132">LLM, temp 0</text><text class="dim" x="500" y="147">strict format</text>
+  <path class="wire" d="M152 120 H178 M306 120 H332 M460 120 H486"/>
+  <rect class="box" x="24" y="200" width="592" height="112" rx="4"/>
+  <text class="dim" x="40" y="224">sshd: Failed password for root from 203.0.113.5</text>
+  <text x="40" y="252">rule      ssh_bruteforce · ioc_hit (Tor exit node)</text>
+  <text x="40" y="272">geo       NL</text>
+  <text x="40" y="292">verdict   malicious · confidence 0.95</text>
+  <rect class="bar-signal" x="24" y="336" width="10" height="24"/><text x="44" y="353">Off-format model output is discarded, never guessed at.</text>
+</svg>

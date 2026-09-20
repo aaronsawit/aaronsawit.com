@@ -1,0 +1,13 @@
+<svg class="diagram" viewBox="0 0 640 400" role="img" aria-label="Bar chart of decode speed in tokens per second on two GTX 1080 Ti cards. Ollama defaults 46. llama.cpp with speculative decoding 43. llama.cpp with quantised cache at 64K depth 42. llama.cpp tuned at full 32K depth 60. llama.cpp tuned with empty context 71.">
+  <text class="big" x="24" y="44">Decode speed, tokens per second</text>
+  <text class="dim" x="24" y="64">35B MoE model · 2× GTX 1080 Ti · same hardware</text>
+  <g>
+    <text x="24" y="112">default runtime</text><rect class="bar" x="220" y="96" width="246" height="24"/><text x="474" y="113">46</text>
+    <text x="24" y="160">+ speculative decoding</text><rect class="bar" x="220" y="144" width="230" height="24"/><text x="458" y="161">43</text><text class="dim" x="492" y="161">net loss</text>
+    <text x="24" y="208">quantised cache, 64K</text><rect class="bar" x="220" y="192" width="225" height="24"/><text x="453" y="209">42</text><text class="dim" x="487" y="209">not free</text>
+    <text x="24" y="256">tuned, full 32K depth</text><rect class="bar-key" x="220" y="240" width="321" height="24"/><text x="549" y="257">60</text>
+    <text x="24" y="304">tuned, empty context</text><rect class="bar-key" x="220" y="288" width="380" height="24"/><text x="576" y="305" class="on-key">71</text>
+  </g>
+  <path class="wire" d="M220 84 V324"/>
+  <rect class="bar-signal" x="24" y="344" width="10" height="24"/><text x="44" y="361">48K context passed every check, then crashed. Test at full depth.</text>
+</svg>

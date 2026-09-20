@@ -1,0 +1,1 @@
+(ImageLoaded:(*\\wininet.dll OR *\\version.dll OR *\\dbghelp.dll OR *\\winhttp.dll OR *\\cryptbase.dll OR *\\userenv.dll)) AND (ImageLoaded:(*\\Users\\* OR *\\ProgramData\\* OR *\\Windows\\Temp\\* OR *\\Downloads\\*)) AND (NOT (Signed:true AND Signature:"Microsoft Windows"))

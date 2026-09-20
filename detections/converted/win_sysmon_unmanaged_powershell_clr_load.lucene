@@ -1,0 +1,1 @@
+(ImageLoaded:(*\\clr.dll OR *\\clrjit.dll)) AND (Image:(*\\spoolsv.exe OR *\\notepad.exe OR *\\calc.exe OR *\\rundll32.exe OR *\\svchost.exe OR *\\lsass.exe))

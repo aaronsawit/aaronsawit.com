@@ -1,0 +1,1 @@
+ImageLoaded IN ("*\\clr.dll", "*\\clrjit.dll") Image IN ("*\\spoolsv.exe", "*\\notepad.exe", "*\\calc.exe", "*\\rundll32.exe", "*\\svchost.exe", "*\\lsass.exe")

@@ -1,0 +1,196 @@
+{
+  "name": "Aaron Sawit",
+  "url": "https://aaronsawit.com",
+  "location": "Singapore",
+  "email": "hello@aaronsawit.com",
+  "github": "https://github.com/aaronsawit",
+  "linkedin": "https://www.linkedin.com/in/neil-aaron-s-570411246/",
+  "description": "Aaron Sawit is a security engineer in Singapore who builds free learning tools used by students and teachers, runs his own infrastructure, and explains hard things simply.",
+  "about": [
+    "I work in cybersecurity full time, on the risk and compliance side, and I tutor special needs students on the side. The tutoring is why the Versed tools exist and why they are free: the kids I teach needed calmer, simpler tools than the ones schools pay for, so I built them.",
+    "My training is hands-on. I hold the GIAC Certified Incident Handler and worked through Hack The Box's SOC analyst path. I like the moment a vague symptom turns into one specific line in one specific log.",
+    "Six years of teaching children who struggle with text has made me good at one thing most engineers avoid: explaining something hard to someone who is not technical, without talking down to them."
+  ],
+  "training": [
+    {
+      "name": "GIAC Certified Incident Handler (GCIH)",
+      "note": "SANS SEC504: Hacker Tools, Techniques and Incident Handling"
+    },
+    {
+      "name": "Hack The Box Academy",
+      "note": "SOC Analyst path: SIEM, Windows event logs, incident handling"
+    },
+    {
+      "name": "Red Alpha",
+      "note": "Cybersecurity specialist training, Singapore"
+    },
+    {
+      "name": "CSIT TISC CTF",
+      "note": "Reached Level 5 previously. In 2026, the year AI tools were allowed, cleared four of ten levels in a single day."
+    }
+  ],
+  "toolbox": [
+    "Linux",
+    "Docker",
+    "Python",
+    "TypeScript",
+    "Cloudflare Workers",
+    "Durable Objects",
+    "D1 / SQLite",
+    "Elastic Stack",
+    "Sysmon",
+    "Snort",
+    "iptables",
+    "WireGuard / Tailscale",
+    "llama.cpp",
+    "ffmpeg"
+  ],
+  "also": [
+    {
+      "name": "Exam-practice tutoring app",
+      "what": "Student and teacher web app for primary school English, built with a partner who owns the backend. Hint ladders that fade as mastery grows, and a teacher view of every attempt. In development.",
+      "href": "/#contact"
+    },
+    {
+      "name": "Futures trading bot",
+      "what": "Opening-range-breakout strategy with an LLM as the final filter, broker execution, and guard rails that enforce drawdown and position limits. Paper traded.",
+      "href": "/#contact"
+    },
+    {
+      "name": "Game library intake",
+      "what": "Identifies disc images by their magic bytes, converts the formats emulators refuse, and files everything where the front ends expect it.",
+      "href": "/writing/xemu-please-insert-an-xbox-disc/"
+    }
+  ],
+  "fit": [
+    {
+      "title": "Detection and response",
+      "text": "Log analysis, SIEM work and incident handling. I write detections other people can read and test, and I investigate until there is one named cause.",
+      "proof": "Detection tooling",
+      "href": "/work/detection/"
+    },
+    {
+      "title": "Security-minded infrastructure",
+      "text": "Linux, containers, networking and monitoring, run as code with backups I have restored from and a threat model I can explain.",
+      "proof": "One box, forty services",
+      "href": "/work/homelab/"
+    },
+    {
+      "title": "Shipping secure products",
+      "text": "I take products from a blank page to real users on Cloudflare's edge, and make the privacy and abuse decisions as part of the design.",
+      "proof": "Versed",
+      "href": "/work/versed/"
+    }
+  ],
+  "role": "Security engineer",
+  "seeking": "Security engineering, detection engineering and platform security roles",
+  "cv": {
+    "summary": "Security engineer in Singapore with a first class computer science degree and the GCIH. My day job is security risk and compliance. My training is incident handling and hands-on attack and defence. In my own time I build and run real systems, including a suite of free learning tools used by students and teachers, and I have tutored special needs students for six years, so I am used to explaining hard things simply.",
+    "skills": [
+      [
+        "Detection and response",
+        "Log analysis, SIEM (Elastic Stack), Sysmon and Windows event logs, Sigma rules mapped to MITRE ATT&CK, incident handling (SANS SEC504), Snort, phishing analysis"
+      ],
+      [
+        "Security tools",
+        "Nmap, Wireshark, tcpdump, Scapy, Netcat, Metasploit, Hashcat, John the Ripper, Mimikatz, CrackMapExec, enum4linux, Ligolo-ng, YARA, Splunk, Elastic, Sysmon, Snort, PowerShell"
+      ],
+      [
+        "Infrastructure and network",
+        "Linux, Docker and Compose, systemd, iptables and policy routing, WireGuard and Tailscale, DNS filtering, backups and monitoring, infrastructure as scripts"
+      ],
+      [
+        "Cloud and application",
+        "Cloudflare Workers, Durable Objects, D1 and KV, Pages Functions, TypeScript, authentication with scrypt and cookie sessions, rate limiting and abuse controls, CSP and security headers"
+      ],
+      [
+        "Programming",
+        "Python (tested CLI tools, log pipelines), TypeScript and JavaScript, shell"
+      ],
+      [
+        "Frameworks",
+        "MITRE ATT&CK, NIST CSF, ISO 27001"
+      ]
+    ]
+  },
+  "experience": [
+    {
+      "title": "Cybersecurity Engineer",
+      "org": "GovTech Singapore",
+      "when": "2025 to present",
+      "points": [
+        "Assess the security risk of SaaS and third-party services that government agencies want to adopt, against government ICT security policy (IM8).",
+        "Review requests to deviate from policy: weigh the risk, check the compensating controls, and recommend whether to approve, reject or change them.",
+        "Point of contact for agencies' security policy questions. I turn policy text into a clear answer that engineers can act on."
+      ]
+    },
+    {
+      "title": "Cybersecurity Specialist",
+      "org": "Red Alpha Cybersecurity",
+      "when": "2024 to 2025",
+      "points": [
+        "Full-time blue team and red team training programme. Earned the GIAC Certified Incident Handler (GCIH) through SANS SEC504.",
+        "Completed the Hack The Box SOC Analyst path and reached Level 5 of the CSIT TISC capture-the-flag."
+      ]
+    },
+    {
+      "title": "Private Tutor",
+      "org": "self-employed",
+      "when": "2020 to present",
+      "points": [
+        "One-to-one tutoring for primary and lower-secondary special needs students, referred by a specialist from the Dyslexia Association of Singapore.",
+        "The reason the Versed tools exist: I build what my own students need and keep it free."
+      ]
+    },
+    {
+      "title": "Academic Coach",
+      "org": "RoboThink",
+      "when": "2022 to 2023",
+      "points": [
+        "Taught robotics and beginner coding to children, adapting each lesson to the child's pace and reporting progress to parents."
+      ]
+    },
+    {
+      "title": "Full-time National Service",
+      "org": "Singapore Armed Forces",
+      "when": "2018 to 2020",
+      "points": []
+    }
+  ],
+  "education": [
+    {
+      "name": "BSc (Hons) Computer Science, First Class Honours",
+      "org": "Coventry University, United Kingdom",
+      "when": "2023"
+    },
+    {
+      "name": "Diploma in Information Technology",
+      "org": "PSB Academy, Singapore",
+      "when": "2021"
+    }
+  ],
+  "badges": [
+    "GCIH",
+    "First class BSc, Computer Science",
+    "4 products shipped solo",
+    "6 years teaching"
+  ],
+  "proof": [
+    [
+      "Certification",
+      "GIAC Certified Incident Handler (GCIH)"
+    ],
+    [
+      "Degree",
+      "BSc (Hons) Computer Science, First Class"
+    ],
+    [
+      "Open source",
+      "Sigma detection rules, tested in CI"
+    ],
+    [
+      "Teaching",
+      "6 years tutoring special needs students"
+    ]
+  ]
+}

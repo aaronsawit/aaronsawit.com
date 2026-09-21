@@ -155,13 +155,22 @@
       ]
     },
     {
+      "title": "AI Platform Build (six-month assignment)",
+      "org": "DART, parent company of Red Alpha Cybersecurity",
+      "when": "2025",
+      "points": [
+        "Designed and built an AI-assisted marking platform for the group's bootcamp selection exam, using Claude Sonnet 4.",
+        "Benchmarked it against instructor marking at about 77% agreement before relying on it.",
+        "Used it on past papers and live applicants, several hundred scripts in all."
+      ]
+    },
+    {
       "title": "Cybersecurity Specialist",
       "org": "Red Alpha Cybersecurity",
-      "when": "2024 to 2025",
+      "when": "2024",
       "points": [
-        "Full-time blue team and red team training programme. Earned the GIAC Certified Incident Handler (GCIH) through SANS SEC504 and completed the Hack The Box SOC Analyst path.",
-        "Six-month assignment with DART, the group's parent company: designed and built an AI-assisted marking platform for the bootcamp's selection exam, using Claude Sonnet 4.",
-        "Benchmarked it against instructor marking at about 77% agreement, then used it on past papers and live applicants, several hundred scripts in all."
+        "Full-time blue team and red team training programme (the Alpha Specialist Training Bootcamp).",
+        "Earned the GIAC Certified Incident Handler (GCIH) through SANS SEC504 and completed the Hack The Box SOC Analyst path."
       ]
     },
     {

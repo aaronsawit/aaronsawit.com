@@ -159,9 +159,9 @@
       "org": "DART",
       "when": "2025",
       "points": [
-        "Joined the team building an AI marking system for the group's bootcamp selection exam (Python, Claude 3.5 Sonnet on AWS Bedrock) and took the early prototype to something usable on a full intake.",
-        "Wrote the evaluation harness that scores the model against instructor marking, got batch marking from a spreadsheet working, and wrote and iterated the marking prompts.",
-        "Each prompt change was re-run against the instructors' marks: agreement rose from about 60% to over 70%. Used on past papers and live applicants, several hundred scripts in all."
+        "Rebuilt an early prototype into a working AI marking system for the group's bootcamp selection exam: Python, Claude on AWS Bedrock (3.5 Sonnet, later Sonnet 4), versioned prompt templates, and parallel marking of a full intake from a spreadsheet.",
+        "Wrote the evaluation harness that scores the model against instructor marking, and used it to drive every prompt change: agreement rose from about 60% to about 77%.",
+        "Used it on past papers and live applicants, several hundred scripts in all."
       ]
     },
     {

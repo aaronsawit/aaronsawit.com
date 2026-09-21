@@ -26,7 +26,7 @@
     },
     {
       "name": "CSIT TISC CTF",
-      "note": "Reached Level 5 previously. In 2026, the year AI tools were allowed, cleared four of ten levels in a single day."
+      "note": "National capture-the-flag. In 2026, the year AI tools were allowed, cleared four of ten levels in a single day."
     }
   ],
   "toolbox": [
@@ -153,13 +153,6 @@
         "sub": "Python and Cloudflare Workers AI, open source · 2026",
         "summary": "Prompt-injection regression tests with deterministic grading, a bit-level audit of a model file against its claimed base, a probe for real tool calling, and Break my bot, a six-level game on this site about why telling an AI to keep a secret is not a security control.",
         "metrics": "20 attack patterns, no judge model · found 90 edited rows in 151,936 on a tampered model · tests and CI throughout"
-      },
-      {
-        "title": "Infrastructure and performance",
-        "href": "/work/homelab/",
-        "sub": "Self-hosted · 2026",
-        "summary": "A 40-service home server with no port open to the internet, and a 35-billion-parameter model tuned from 46 to 71 tokens a second on 2017 GPUs.",
-        "metrics": ""
       }
     ],
     "writing": [

@@ -462,8 +462,8 @@ write("cv/index.html", page({
   ${site.education.map((e) => `<div class="cv-item"><h3>${esc(e.name)}</h3><p class="sub">${esc(e.org)} · ${esc(e.when)}</p></div>`).join("")}
   <h2>Training and certification</h2>
   ${site.training.filter((t) => !cv.training || cv.training.includes(t.name)).map((t) => `<div class="cv-item"><h3>${esc(t.name)}</h3><p class="sub">${esc(t.note)}</p></div>`).join("")}
-  <h2>Writing</h2>
-  <div class="cv-item"><ul>${(cv.writing || []).map((slug) => posts.find((p) => p.slug === slug)).filter(Boolean).map((p) => `<li><a href="/writing/${p.slug}/">${esc(p.title)}</a></li>`).join("")}</ul></div>
+  <h2 class="cv-writing">Writing</h2>
+  <div class="cv-item cv-writing"><ul>${(cv.writing || []).map((slug) => posts.find((p) => p.slug === slug)).filter(Boolean).map((p) => `<li><a href="/writing/${p.slug}/">${esc(p.title)}</a></li>`).join("")}</ul></div>
 </article>` }));
 
 write("404.html", page({ title: `Not found · ${site.name}`, description: "Page not found.", body: `<section class="doc-head wrap"><p class="eyebrow">404</p><h1>No such line in this log</h1><p class="lede">The page moved or never existed. The <a href="/writing/">write-ups</a> and the <a href="/#quests">work</a> is still where they should be.</p></section>` }));

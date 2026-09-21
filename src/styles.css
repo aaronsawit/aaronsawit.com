@@ -293,12 +293,12 @@ a.tech:hover { border-color: var(--lime); color: var(--lime); }
 
 @media print {
   :root { --bg: #fff; --bg2: #fff; --card: #fff; --text: #000; --muted: #333; --line: #bbb; --lime: #000; }
-  body { background: #fff; color: #000; font-size: 10.5pt; line-height: 1.4; }
+  body { background: #fff; color: #000; font-size: 10pt; line-height: 1.35; }
   .top, .foot, .skip, .no-print, .contact { display: none !important; }
-  .cv { padding: 0; max-width: none; } .cv h2 { margin-top: 1.1rem; font-size: 12pt; color: #000; } .cv-top { border-color: #000; } .cv-top h1 { font-size: 24pt; }
-  .cv-item { margin-bottom: .6rem; break-inside: avoid; } .cv-skills dd { color: #000; }
+  .cv { padding: 0; max-width: none; } .cv h2 { margin-top: .8rem; margin-bottom: .3rem; font-size: 11.5pt; color: #000; } .cv-top { border-color: #000; } .cv-top h1 { font-size: 20pt; }
+  .cv-item { margin-bottom: .4rem; break-inside: avoid; } .cv-item ul { margin: .15rem 0 0; } .cv-item li { margin: 0 0 .1rem; } .cv-summary { margin: .5rem 0; } .cv-writing { display: none; } .cv-skills dd { color: #000; }
   a { text-decoration: none; color: #000; }
-  @page { margin: 14mm 15mm; }
+  @page { margin: 12mm 14mm; }
 }
 
 .btn-play { border-color: var(--pink); color: var(--pink); } .btn-play:hover { background: var(--pink); color: var(--ink); border-color: var(--pink); }

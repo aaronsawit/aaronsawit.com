@@ -156,7 +156,7 @@
     },
     {
       "title": "AI Platform Build (six-month assignment)",
-      "org": "DART, parent company of Red Alpha Cybersecurity",
+      "org": "DART",
       "when": "2025",
       "points": [
         "Designed and built an AI-assisted marking platform for the group's bootcamp selection exam, using Claude Sonnet 4.",

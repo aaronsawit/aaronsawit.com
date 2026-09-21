@@ -81,7 +81,7 @@ const footer = `
 </footer>`;
 
 const FONTS = "https://fonts.googleapis.com/css2?family=Geist:wght@400..800&family=Geist+Mono:wght@400..600&display=swap";
-const page = ({ title, description, body, active = "", klass = "", canonical = "/", scripts = [] }) => `<!doctype html>
+const page = ({ title, description, body, active = "", klass = "", canonical = "/", scripts = [], jsonld = null }) => `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -102,6 +102,7 @@ const page = ({ title, description, body, active = "", klass = "", canonical = "
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="${FONTS}" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css?v=${ver("src/styles.css")}">
+${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, "\\u003c")}</script>` : ""}
 </head>
 <body class="${klass}">
 <a class="skip" href="#main">Skip to content</a>
@@ -303,7 +304,20 @@ fs.cpSync(path.join(ROOT, "wp-export/img"), path.join(DIST, "img/blog"), { recur
 fs.copyFileSync(path.join(ROOT, "src/styles.css"), path.join(DIST, "styles.css"));
 fs.copyFileSync(path.join(ROOT, "src/site.js"), path.join(DIST, "site.js"));
 
-write("index.html", page({ title: `${site.name}: cybersecurity engineer and builder`, description: site.description, body: home, klass: "home" }));
+// who this site is about, in the form search engines read (schema.org)
+const person = {
+  "@context": "https://schema.org", "@type": "ProfilePage",
+  mainEntity: {
+    "@type": "Person", "@id": `${site.url}/#person`, name: site.name, alternateName: "Neil Aaron Sawit",
+    url: site.url, image: `${site.url}/img/aaron.jpg`, jobTitle: site.role, description: site.description,
+    address: { "@type": "PostalAddress", addressCountry: "SG" },
+    alumniOf: { "@type": "CollegeOrUniversity", name: "Coventry University" },
+    hasCredential: { "@type": "EducationalOccupationalCredential", name: "GIAC Certified Incident Handler (GCIH)" },
+    knowsAbout: ["Cybersecurity", "AI security", "Detection engineering", "Technology risk", "Sigma rules", "MITRE ATT&CK"],
+    sameAs: [site.github, site.linkedin].filter(Boolean),
+  },
+};
+write("index.html", page({ title: `${site.name}: cybersecurity engineer and builder`, description: site.description, body: home, klass: "home", jsonld: person }));
 
 for (const w of work) {
   const i = work.indexOf(w), next = work[(i + 1) % work.length];

@@ -155,12 +155,12 @@
       ]
     },
     {
-      "title": "AI Platform Build (six-month assignment)",
+      "title": "AI Engineer (six-month assignment)",
       "org": "DART",
       "when": "2025",
       "points": [
-        "Designed and built an AI-assisted marking platform for the group's bootcamp selection exam, using Claude Sonnet 4.",
-        "Benchmarked it against instructor marking at about 77% agreement before relying on it.",
+        "Designed and built an AI marking system for the group's bootcamp selection exam: Python, Claude 3.5 Sonnet on AWS Bedrock, versioned prompt templates, and parallel marking of a full intake from a spreadsheet.",
+        "Built the evaluation harness that scores the model against instructor marking, and used it to drive prompt changes: agreement rose from about 60% to about 77% over successive versions.",
         "Used it on past papers and live applicants, several hundred scripts in all."
       ]
     },

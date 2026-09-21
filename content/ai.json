@@ -37,6 +37,15 @@
       "proofHref": "/writing/cloudflare-kv-cannot-rate-limit/"
     },
     {
+      "title": "AI marking for a selection exam",
+      "where": "DART / Red Alpha, six-month assignment, 2025",
+      "href": "/cv/",
+      "what": "An AI-assisted marking platform for a cybersecurity bootcamp's selection exam, built on Claude Sonnet 4 and used on several hundred scripts, past papers and live applicants.",
+      "guard": "I did not trust it until I had measured it: benchmarked against instructor marking, it agreed about 77% of the time. That number is the point. It tells you the model is a fast first marker, not a judge, and that the disagreements are where a person needs to look.",
+      "proof": "On my CV",
+      "proofHref": "/cv/"
+    },
+    {
       "title": "Open-source tools for AI security",
       "where": "GitHub, open source",
       "href": "https://github.com/aaronsawit/llm-guardrail-tests",

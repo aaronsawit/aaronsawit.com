@@ -159,8 +159,9 @@
       "org": "Red Alpha Cybersecurity",
       "when": "2024 to 2025",
       "points": [
-        "Full-time blue team and red team training programme. Earned the GIAC Certified Incident Handler (GCIH) through SANS SEC504.",
-        "Completed the Hack The Box SOC Analyst path and reached Level 5 of the CSIT TISC capture-the-flag."
+        "Full-time blue team and red team training programme. Earned the GIAC Certified Incident Handler (GCIH) through SANS SEC504 and completed the Hack The Box SOC Analyst path.",
+        "Six-month assignment with DART, the group's parent company: designed and built an AI-assisted marking platform for the bootcamp's selection exam, using Claude Sonnet 4.",
+        "Benchmarked it against instructor marking at about 77% agreement, then used it on past papers and live applicants, several hundred scripts in all."
       ]
     },
     {

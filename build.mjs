@@ -217,7 +217,7 @@ const home = `
     </div>
     <p class="ai-play"><a class="btn btn-play" href="/break/">Play "Break my bot"</a> <span>a six-level game I built: talk a chatbot into leaking its password, and see which defences hold.</span></p>
     <ol class="lab">${ai.projects.slice(0, 3).map(labCard).join("")}</ol>
-    <p class="more"><a href="/ai/">All ${ai.projects.length} AI projects, and the six rules I build them by</a></p>
+    <p class="more"><a href="/ai/">All ${ai.projects.length} AI projects, and the guardrail on each one</a></p>
   </div>
 </section>
 
@@ -385,8 +385,6 @@ write("ai/index.html", page({
   <p class="ai-play"><a class="btn btn-solid" href="/break/">Play "Break my bot" →</a> <span>a prompt-injection game: talk a chatbot into leaking its password across six real defences.</span></p>
 </section>
 <section class="wrap">
-  <h2 class="list-head">Six rules</h2>
-  <ol class="rules">${ai.rules.map(([t, d], i) => `<li><span class="n">${i + 1}</span><h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join("")}</ol>
   <h2 class="list-head">What I have built</h2>
   <ol class="lab lab-wide">${ai.projects.map(labCard).join("")}</ol>
 </section>

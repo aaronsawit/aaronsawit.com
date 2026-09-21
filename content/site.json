@@ -115,32 +115,61 @@
   "role": "Security engineer",
   "seeking": "Security engineering, detection engineering and platform security roles",
   "cv": {
-    "summary": "Security engineer in Singapore with a first class computer science degree and the GCIH. My day job is security risk and compliance. My training is incident handling and hands-on attack and defence. In my own time I build and run real systems, including a suite of free learning tools used by students and teachers, and I have tutored special needs students for six years, so I am used to explaining hard things simply.",
+    "summary": "Security engineer with a First Class computer science degree and the GCIH. By day I assess technology risk against government security policy. I also build and test AI systems: a marking system measured against human examiners, open-source guardrail tests, and a suite of free learning tools used by students. Six years of tutoring special needs students taught me to explain hard things simply.",
     "skills": [
       [
+        "Risk and governance",
+        "Third-party and SaaS security risk assessment, policy deviation review, compensating controls, government ICT security policy (IM8), NIST CSF, ISO 27001"
+      ],
+      [
+        "AI engineering and AI security",
+        "LLM applications on AWS Bedrock and Cloudflare Workers AI, prompt evaluation against human marking, prompt-injection regression tests, model file integrity checks, cost and rate caps in code"
+      ],
+      [
         "Detection and response",
-        "Log analysis, SIEM (Elastic Stack), Sysmon and Windows event logs, Sigma rules mapped to MITRE ATT&CK, incident handling (SANS SEC504), Snort, phishing analysis"
-      ],
-      [
-        "Security tools",
-        "Nmap, Wireshark, tcpdump, Scapy, Netcat, Metasploit, Hashcat, John the Ripper, Mimikatz, CrackMapExec, enum4linux, Ligolo-ng, YARA, Splunk, Elastic, Sysmon, Snort, PowerShell"
-      ],
-      [
-        "Infrastructure and network",
-        "Linux, Docker and Compose, systemd, iptables and policy routing, WireGuard and Tailscale, DNS filtering, backups and monitoring, infrastructure as scripts"
+        "Sigma rules mapped to MITRE ATT&CK, Elastic Stack and Splunk, Sysmon and Windows event logs, incident handling (SANS SEC504), Wireshark, Nmap, YARA, Snort"
       ],
       [
         "Cloud and application",
-        "Cloudflare Workers, Durable Objects, D1 and KV, Pages Functions, TypeScript, authentication with scrypt and cookie sessions, rate limiting and abuse controls, CSP and security headers"
+        "AWS Bedrock and IAM, Cloudflare Workers, Durable Objects, D1, KV and Pages, TypeScript, authentication and sessions, rate limiting, CSP and security headers"
+      ],
+      [
+        "Infrastructure",
+        "Linux, Docker and Compose, systemd, iptables, WireGuard and Tailscale, DNS filtering, backups and monitoring"
       ],
       [
         "Programming",
-        "Python (tested CLI tools, log pipelines), TypeScript and JavaScript, shell"
-      ],
-      [
-        "Frameworks",
-        "MITRE ATT&CK, NIST CSF, ISO 27001"
+        "Python, TypeScript and JavaScript, shell"
       ]
+    ],
+    "selected": [
+      "versed",
+      "detection"
+    ],
+    "extra": [
+      {
+        "title": "Open-source AI security tools",
+        "href": "https://github.com/aaronsawit",
+        "sub": "Python and Cloudflare Workers AI, open source · 2026",
+        "summary": "Prompt-injection regression tests with deterministic grading, a bit-level audit of a model file against its claimed base, a probe for real tool calling, and Break my bot, a six-level game on this site about why telling an AI to keep a secret is not a security control.",
+        "metrics": "20 attack patterns, no judge model · found 90 edited rows in 151,936 on a tampered model · tests and CI throughout"
+      },
+      {
+        "title": "Infrastructure and performance",
+        "href": "/work/homelab/",
+        "sub": "Self-hosted · 2026",
+        "summary": "A 40-service home server with no port open to the internet, and a 35-billion-parameter model tuned from 46 to 71 tokens a second on 2017 GPUs.",
+        "metrics": ""
+      }
+    ],
+    "writing": [
+      "cloudflare-kv-cannot-rate-limit",
+      "agent-narrates-instead-of-calling-tools",
+      "docker-containers-lose-gpu-after-daemon-reload"
+    ],
+    "training": [
+      "GIAC Certified Incident Handler (GCIH)",
+      "CSIT TISC CTF"
     ]
   },
   "experience": [
@@ -155,7 +184,7 @@
       ]
     },
     {
-      "title": "AI Engineer (six-month assignment)",
+      "title": "AI Engineer (assignment)",
       "org": "DART",
       "when": "2025",
       "points": [
@@ -178,16 +207,7 @@
       "org": "self-employed",
       "when": "2020 to present",
       "points": [
-        "One-to-one tutoring for primary and lower-secondary special needs students, referred by a specialist from the Dyslexia Association of Singapore.",
-        "The reason the Versed tools exist: I build what my own students need and keep it free."
-      ]
-    },
-    {
-      "title": "Academic Coach",
-      "org": "RoboThink",
-      "when": "2022 to 2023",
-      "points": [
-        "Taught robotics and beginner coding to children, adapting each lesson to the child's pace and reporting progress to parents."
+        "One-to-one tutoring for primary and lower-secondary special needs students, referred by a specialist from the Dyslexia Association of Singapore. The reason the Versed tools exist: I build what my own students need and keep it free."
       ]
     },
     {

@@ -10,7 +10,7 @@ image: /img/shots/study.jpg
 image_alt: Versed Study home page showing a pixel-art cat cafe study room
 stack: ["TypeScript", "Cloudflare Workers", "Durable Objects", "D1", "KV", "Pages Functions", "React Native / Expo", "Supabase", "PWA"]
 short: Four free learning tools for students, tutors and teachers. I designed, coded and run all of it.
-metrics: ["4 products live","0 accounts needed to play","1 person: design, code, ops"]
+metrics: ["4 products live","no sign-up, no tracking","1 person: design, code, ops"]
 ---
 
 ## Why it exists

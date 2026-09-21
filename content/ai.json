@@ -38,7 +38,7 @@
     },
     {
       "title": "AI marking for a selection exam",
-      "where": "DART, six-month assignment, 2025",
+      "where": "DART assignment, 2025",
       "href": "/cv/",
       "what": "An AI marking system for a cybersecurity bootcamp's selection exam, rebuilt from an early prototype: Claude on AWS Bedrock, versioned prompts, and an evaluation harness. Used on several hundred scripts, past papers and live applicants.",
       "guard": "Nothing was trusted until it was measured. Every prompt change was re-run against instructor marking, and agreement went from about 60% to about 77%. That number is the point: it says the model is a fast first marker, not a judge, and that the disagreements are where a person needs to look.",

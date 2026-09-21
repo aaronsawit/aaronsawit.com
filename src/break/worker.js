@@ -8,7 +8,7 @@
 // Cloudflare fetch handler; it only touches Workers APIs (env.AI, Response) inside fetch(), so this
 // file imports cleanly in plain Node.
 
-export const MODEL = "@cf/meta/llama-3.1-8b-instruct";
+export const MODEL = "@cf/meta/llama-3.1-8b-instruct-fp8";
 export const MAX_INPUT = 600; // characters accepted from the player, per message
 export const MAX_TOKENS = 220; // cap on the model's reply, so one request can never cost much
 

@@ -173,7 +173,7 @@ const home = `
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="pill">${esc(site.role)} · ${esc(site.location)}</p>
+      <p class="byline"><img src="/img/aaron.jpg" alt="" width="480" height="480"><span><strong>${esc(site.name)}</strong><span class="pill">${esc(site.role)} · ${esc(site.location)}</span></span></p>
       <h1>Security engineer who <em>builds</em>.</h1>
       <p class="lede">Risk and compliance by day. In my own time I ship products people use, run my own infrastructure, put guardrails on AI, and trace every failure to its real cause.</p>
       <div class="actions">
@@ -268,21 +268,23 @@ const home = `
 
 <section class="band band-alt" id="about">
   <div class="wrap about">
-    <div>
+    <figure class="portrait">
+      <img src="/img/aaron.jpg" alt="Aaron Sawit" width="480" height="480" loading="lazy">
+      <figcaption><span>${esc(site.name)}</span><span>${esc(site.location)} · UTC+8</span></figcaption>
+    </figure>
+    <div class="about-text">
       <h2>About</h2>
-      <img class="about-photo" src="/img/aaron.jpg" alt="Aaron Sawit" width="480" height="480" loading="lazy">
       ${site.about.map((p) => `<p>${p}</p>`).join("")}
-    </div>
-    <aside>
       <h3>Credentials</h3>
       <ul class="facts">${[...site.education.map((e) => ({ name: e.name, note: e.org })), ...site.training].map((t) => `<li><strong>${esc(t.name)}</strong><span>${esc(t.note)}</span></li>`).join("")}</ul>
-    </aside>
+    </div>
   </div>
 </section>
 
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="save">
+      <img class="save-face" src="/img/aaron.jpg" alt="" width="480" height="480" loading="lazy">
       <div>
         <h2>Get in touch</h2>
         <p>I reply to every message, and I am happy to walk through anything here on a call.</p>

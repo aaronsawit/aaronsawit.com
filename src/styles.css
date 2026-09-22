@@ -98,7 +98,6 @@ code { font-family: var(--mono); }
 @media (max-width: 56rem) { .hero-grid { grid-template-columns: 1fr; } }
 @media (max-width: 26rem) { .creds div { grid-template-columns: 1fr; gap: .1rem; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-.about-photo { width: 112px; height: 112px; border-radius: 14px; object-fit: cover; border: 1px solid var(--line); margin: 0 0 1.4rem; }
 
 /* ---------- bands ---------- */
 .band { padding: clamp(3rem, 7vw, 5.5rem) 0; }
@@ -175,17 +174,32 @@ code { font-family: var(--mono); }
 .inventory p { margin: 0 0 .4rem; color: var(--muted); font-size: .98rem; }
 @media (max-width: 56rem) { .inventory { grid-template-columns: 1fr; } }
 
-/* about */
-.about { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); }
-.about h2 { margin-bottom: 1.3rem; }
-.about p { margin: 0 0 1.1rem; max-width: 40rem; color: var(--muted); }
-.about p:first-of-type { color: var(--text); font-size: 1.12rem; }
-.about aside h3 { font-size: 1rem; color: var(--muted); margin: 0 0 .8rem; }
-.facts { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
-.facts li { padding: .85rem 1.1rem; border-radius: 14px; background: var(--card); border: 1px solid var(--line); }
-.facts strong { display: block; }
-.facts span { color: var(--muted); font-size: .93rem; }
-@media (max-width: 52rem) { .about { grid-template-columns: 1fr; } }
+/* hero byline: a small face beside the name, so the page opens with a person but leads with the work */
+.byline { display: flex; align-items: center; gap: .9rem; margin: 0 0 1.4rem; }
+.byline img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px rgba(198, 255, 61, .35); filter: saturate(.9); }
+.byline > span { display: flex; flex-direction: column; gap: .15rem; }
+.byline strong { font-size: 1rem; letter-spacing: -.01em; }
+.byline .pill { margin: 0; }
+
+/* about: the portrait gets its own column and a printed-frame treatment */
+.about { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+.portrait { margin: 0; width: 280px; position: relative; }
+.portrait img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 20px; filter: saturate(.9); position: relative; z-index: 1; }
+.portrait::before { content: ""; position: absolute; inset: 0; aspect-ratio: 1; border: 1.5px solid var(--lime); border-radius: 20px; transform: translate(14px, 14px); transition: transform .6s var(--ease); pointer-events: none; }
+.portrait:hover::before { transform: translate(0, 0); }
+.portrait figcaption { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.3rem; padding-top: .7rem; border-top: 1px solid var(--line); font-family: var(--mono); font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: var(--dim); }
+.portrait figcaption span:first-child { color: var(--muted); }
+.about-text h2 { margin-bottom: 1.3rem; }
+.about-text p { margin: 0 0 1.1rem; max-width: 40rem; color: var(--muted); }
+.about-text p:first-of-type { color: var(--text); font-size: 1.12rem; }
+.about-text h3 { font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--dim); margin: 2rem 0 .8rem; }
+.facts { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: .8rem 2rem; }
+.facts li { display: flex; flex-direction: column; gap: .15rem; padding: .7rem 0; border-top: 1px solid var(--line); }
+.facts strong { font-size: .95rem; } .facts span { color: var(--muted); font-size: .88rem; }
+@media (max-width: 52rem) { .about { grid-template-columns: 1fr; } .portrait { width: min(240px, 70%); } }
+@media (prefers-reduced-motion: reduce) { .portrait::before { transition: none; } }
+/* contact: a face next to the invitation */
+.save-face { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; border: 1px solid var(--line); filter: saturate(.9); }
 
 /* contact */
 .contact { padding: clamp(3rem, 7vw, 5rem) 0; }

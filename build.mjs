@@ -173,7 +173,7 @@ const home = `
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="byline"><img src="/img/aaron.jpg" alt="" width="480" height="480"><span><strong>${esc(site.name)}</strong><span class="pill">${esc(site.role)} · ${esc(site.location)}</span></span></p>
+      <p class="pill">${esc(site.role)} · ${esc(site.location)}</p>
       <h1>Security engineer who <em>builds</em>.</h1>
       <p class="lede">Risk and compliance by day. In my own time I ship products people use, run my own infrastructure, put guardrails on AI, and trace every failure to its real cause.</p>
       <div class="actions">
@@ -182,7 +182,7 @@ const home = `
         <a class="btn" href="#quests">See the work</a>
       </div>
     </div>
-    <div class="globe-wrap" aria-hidden="true"><canvas id="globe"></canvas></div>
+    <div class="globe-wrap"><canvas id="globe" aria-hidden="true"></canvas><img class="globe-face" src="/img/aaron.jpg" alt="Aaron Sawit" width="480" height="480"></div>
   </div>
   <div class="wrap">
   <aside class="proof" aria-label="Credentials and numbers">
@@ -284,7 +284,6 @@ const home = `
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="save">
-      <img class="save-face" src="/img/aaron.jpg" alt="" width="480" height="480" loading="lazy">
       <div>
         <h2>Get in touch</h2>
         <p>I reply to every message, and I am happy to walk through anything here on a call.</p>

@@ -174,12 +174,6 @@ code { font-family: var(--mono); }
 .inventory p { margin: 0 0 .4rem; color: var(--muted); font-size: .98rem; }
 @media (max-width: 56rem) { .inventory { grid-template-columns: 1fr; } }
 
-/* hero byline: a small face beside the name, so the page opens with a person but leads with the work */
-.byline { display: flex; align-items: center; gap: .9rem; margin: 0 0 1.4rem; }
-.byline img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px rgba(198, 255, 61, .35); filter: saturate(.9); }
-.byline > span { display: flex; flex-direction: column; gap: .15rem; }
-.byline strong { font-size: 1rem; letter-spacing: -.01em; }
-.byline .pill { margin: 0; }
 
 /* about: the portrait gets its own column and a printed-frame treatment */
 .about { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; }
@@ -198,9 +192,6 @@ code { font-family: var(--mono); }
 .facts strong { font-size: .95rem; } .facts span { color: var(--muted); font-size: .88rem; }
 @media (max-width: 52rem) { .about { grid-template-columns: 1fr; } .portrait { width: min(240px, 70%); } }
 @media (prefers-reduced-motion: reduce) { .portrait::before { transition: none; } }
-/* contact: a face next to the invitation */
-.save-face { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; border: 1px solid var(--line); filter: saturate(.9); }
-
 /* contact */
 .contact { padding: clamp(3rem, 7vw, 5rem) 0; }
 .save { display: flex; align-items: center; gap: clamp(1.2rem, 4vw, 3rem); flex-wrap: wrap; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: clamp(1.6rem, 4vw, 3rem); }
@@ -321,6 +312,10 @@ a.tech:hover { border-color: var(--lime); color: var(--lime); }
 .globe-wrap { justify-self: center; width: min(100%, 460px); aspect-ratio: 1; position: relative; }
 .globe-wrap::before { content: ""; position: absolute; inset: 12%; border-radius: 50%; background: radial-gradient(circle, rgba(198, 255, 61, .10), transparent 65%); }
 #globe { width: 100%; height: 100%; display: block; position: relative; }
+/* the portrait sits at the centre of the network, so the points orbit the person */
+.globe-face { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 38%; aspect-ratio: 1; height: auto; border-radius: 50%; object-fit: cover; filter: saturate(.9); z-index: 2; box-shadow: 0 0 0 4px var(--bg), 0 0 0 5.5px var(--lime), 0 0 60px rgba(198, 255, 61, .18); animation: face-in .8s var(--ease) both; }
+@keyframes face-in { from { opacity: 0; transform: translate(-50%, -50%) scale(.9); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .globe-face { animation: none; } }
 .hero .proof { margin-top: clamp(2rem, 5vw, 3.5rem); display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
 .hero .creds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-right: 1px solid var(--line); }
 .hero .creds div { grid-template-columns: 1fr; gap: .2rem; border-right: 1px solid var(--line); }

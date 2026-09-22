@@ -470,10 +470,10 @@ write("cv/index.html", page({
   <h2>Selected work</h2>
   ${work.filter((w) => (cv.selected || []).includes(w.slug)).map((w) => `<div class="cv-item"><h3><a href="/work/${w.slug}/">${esc(w.title)}</a></h3><p class="sub">${esc(w.kind)} · ${esc(w.when)}</p><ul><li>${esc(w.summary)}</li>${(w.metrics || []).length ? `<li>${w.metrics.map(esc).join(" · ")}</li>` : ""}</ul></div>`).join("")}
   ${(cv.extra || []).map((x) => `<div class="cv-item"><h3><a href="${x.href}">${esc(x.title)}</a></h3><p class="sub">${esc(x.sub)}</p><ul><li>${esc(x.summary)}</li>${x.metrics ? `<li>${esc(x.metrics)}</li>` : ""}</ul></div>`).join("")}
-  <h2>Education</h2>
-  ${site.education.map((e) => `<div class="cv-item"><h3>${esc(e.name)}</h3><p class="sub">${esc(e.org)} · ${esc(e.when)}</p></div>`).join("")}
   <h2>Training and certification</h2>
   ${site.training.filter((t) => !cv.training || cv.training.includes(t.name)).map((t) => `<div class="cv-item"><h3>${esc(t.name)}</h3><p class="sub">${esc(t.note)}</p></div>`).join("")}
+  <h2>Education</h2>
+  ${site.education.map((e) => `<div class="cv-item"><h3>${esc(e.name)}</h3><p class="sub">${esc(e.org)} · ${esc(e.when)}</p></div>`).join("")}
   <h2 class="cv-writing">Writing</h2>
   <div class="cv-item cv-writing"><ul>${(cv.writing || []).map((slug) => posts.find((p) => p.slug === slug)).filter(Boolean).map((p) => `<li><a href="/writing/${p.slug}/">${esc(p.title)}</a></li>`).join("")}</ul></div>
 </article>` }));

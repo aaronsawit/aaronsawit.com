@@ -2,7 +2,7 @@
 order: 4
 title: One box, forty services
 kind: Infrastructure, self-hosted
-summary: A recycled gaming PC running forty-odd containers for my family: photos, passwords, media, DNS filtering, game streaming and local AI. Reachable from anywhere, with no port open to the internet.
+summary: An old gaming PC, recycled to run forty-odd containers for my family: photos, passwords, media, DNS filtering, game streaming and local AI. It's reachable from anywhere, with no port open to the internet.
 role: Architect, operator, on-call
 when: 2026, ongoing
 visual: homelab

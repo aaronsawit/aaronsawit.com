@@ -2,7 +2,7 @@
 order: 3
 title: Local AI on 2017 hardware
 kind: Performance engineering
-summary: Getting a 35-billion-parameter model to 66 tokens a second on two GTX 1080 Tis by measuring every assumption, including the ones in the documentation.
+summary: How I got a 35-billion-parameter model to 66 tokens a second on two GTX 1080 Tis: by measuring every assumption, including the ones in the documentation.
 role: Builder and benchmarker
 when: 2026
 visual: llm-bench

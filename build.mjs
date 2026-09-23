@@ -175,7 +175,7 @@ const home = `
     <div>
       <p class="pill">${esc(site.role)} · ${esc(site.location)}</p>
       <h1>Security engineer who <em>builds</em>.</h1>
-      <p class="lede">Risk and compliance by day. In my own time I ship products people use, run my own infrastructure, put guardrails on AI, and trace every failure to its real cause.</p>
+      <p class="lede">I do security risk and compliance for a living. Outside work I build things people actually use, run my own servers, keep AI on a short leash, and chase bugs down to the real cause.</p>
       <div class="actions">
         <a class="btn btn-solid" href="/cv/">Read my CV</a>
         <a class="btn btn-play" href="/break/">Break my bot</a>
@@ -202,8 +202,8 @@ const home = `
 <section class="band" id="quests">
   <div class="wrap">
     <div class="band-head">
-      <h2><small>designed, built and run by me</small>Selected work</h2>
-      <p>Each one opens into a short case study: what it is, the decisions, and the mistakes.</p>
+      <h2><small>the two big ones</small>Selected work</h2>
+      <p>Each opens a short case study: what it is, the calls I made, and what I got wrong.</p>
     </div>
     <ol class="quests">${main.map(questCard).join("")}</ol>
   </div>
@@ -212,10 +212,10 @@ const home = `
 <section class="band band-alt" id="ai">
   <div class="wrap">
     <div class="band-head">
-      <h2><small>limits, tests and a human in charge</small>AI engineering</h2>
+      <h2><small>useful, but supervised</small>AI engineering</h2>
       <p>${esc(ai.lede)}</p>
     </div>
-    <p class="ai-play"><a class="btn btn-play" href="/break/">Play "Break my bot"</a> <span>a six-level game I built: talk a chatbot into leaking its password, and see which defences hold.</span></p>
+    <p class="ai-play"><a class="btn btn-play" href="/break/">Play "Break my bot"</a> <span>a six-level game I made. Try to talk a chatbot into leaking its password and see which defences hold up.</span></p>
     <ol class="lab">${ai.projects.slice(0, 3).map(labCard).join("")}</ol>
     <p class="more"><a href="/ai/">All ${ai.projects.length} AI projects, and the guardrail on each one</a></p>
   </div>
@@ -224,8 +224,8 @@ const home = `
 <section class="band" id="inventory">
   <div class="wrap">
     <div class="band-head">
-      <h2><small>three kinds of work</small>What I bring to a team</h2>
-      <p>Three kinds of work, and the tools I reach for in each.</p>
+      <h2><small>three kinds of work</small>What I'm good at</h2>
+      <p>The work I do most, and the tools I usually reach for in each.</p>
     </div>
     <div class="inventory">
       ${site.fit.map((f, i) => `<section><h3>${esc(f.title)}</h3><p>${esc(f.text)}</p>${tags(site.cv.skills[[2, 4, 3][i]][1].split(", ").slice(0, 9))}</section>`).join("")}
@@ -236,8 +236,8 @@ const home = `
 <section class="band band-alt" id="side">
   <div class="wrap">
     <div class="band-head">
-      <h2><small>smaller, sharper</small>More work</h2>
-      <p>Infrastructure and performance work on my own hardware, plus the small open-source tools that came out of it.</p>
+      <h2><small>the side projects</small>More work</h2>
+      <p>Stuff I run on my own hardware, plus the small open-source tools that fell out of it.</p>
     </div>
     <ol class="quests">${side.map(questCard).join("")}</ol>
     <div class="also">
@@ -252,8 +252,8 @@ const home = `
 <section class="band" id="bugs">
   <div class="wrap">
     <div class="band-head">
-      <h2><small>reported symptom, then the actual cause</small>Root-cause write-ups</h2>
-      <p>Real failures from systems I run. I do not stop at the symptom.</p>
+      <h2><small>what it looked like, then what it was</small>Root-cause write-ups</h2>
+      <p>Real things that broke on systems I run, and what was actually behind each one.</p>
     </div>
     <p class="cases-key"><span class="k-said">what they said</span><span class="k-was">what it was</span></p>
     <ol class="cases">${cases.map((p) => `
@@ -286,7 +286,7 @@ const home = `
     <div class="save">
       <div>
         <h2>Get in touch</h2>
-        <p>I reply to every message, and I am happy to walk through anything here on a call.</p>
+        <p>I read and reply to every message. Happy to walk through any of this on a call, too.</p>
         <div class="actions">
           ${site.linkedin ? `<a class="btn btn-solid" href="${site.linkedin}">Message me on LinkedIn</a>` : ""}
           <a class="btn" href="/cv/">CV</a>
@@ -349,7 +349,7 @@ write("writing/index.html", page({
 <section class="doc-head wrap">
   <p class="eyebrow">Write-ups</p>
   <h1>Notes from the terminal</h1>
-  <p class="lede">Root-cause write-ups from my own systems, plus blue team notes and lab work from my training.</p>
+  <p class="lede">Things that broke on my own systems and what actually caused them, plus blue team notes and lab work from my training.</p>
 </section>
 <section class="wrap">
   <h2 class="list-head">Debugging and systems</h2>
@@ -383,10 +383,10 @@ write("ai/index.html", page({
   <p class="tagline">AI</p>
   <h1>I build with AI, and I put limits on it</h1>
   <p class="lede">${esc(ai.lede)}</p>
-  <p class="ai-play"><a class="btn btn-solid" href="/break/">Play "Break my bot" →</a> <span>a prompt-injection game: talk a chatbot into leaking its password across six real defences.</span></p>
+  <p class="ai-play"><a class="btn btn-solid" href="/break/">Play "Break my bot" →</a> <span>a prompt-injection game. Get a chatbot to give up its password, past six real defences.</span></p>
 </section>
 <section class="wrap">
-  <h2 class="list-head">What I have built</h2>
+  <h2 class="list-head">What I've built</h2>
   <ol class="lab lab-wide">${ai.projects.map(labCard).join("")}</ol>
 </section>
 <nav class="next wrap"><a href="/writing/"><span>Next</span><strong>The write-ups</strong></a></nav>` }));

@@ -2,7 +2,7 @@
 order: 1
 title: Versed
 kind: Product suite, solo
-summary: Four free learning tools for students, tutors and teachers, designed, built and run by one person on Cloudflare's edge. No sign-up to play, no tracking, no budget.
+summary: Four free learning tools for students, tutors and teachers. I design, build and run all of them myself, on Cloudflare's edge. No sign-up to play, no tracking, and no budget.
 role: Everything: product, design, code, operations
 when: 2026, ongoing
 link: https://versedapps.com

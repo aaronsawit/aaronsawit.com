@@ -5,11 +5,11 @@
   "email": "aaronsawit@gmail.com",
   "github": "https://github.com/aaronsawit",
   "linkedin": "https://www.linkedin.com/in/neil-aaron-s-570411246/",
-  "description": "Aaron Sawit is a security engineer in Singapore who builds free learning tools used by students and teachers, runs his own infrastructure, and explains hard things simply.",
+  "description": "Aaron Sawit is a security engineer in Singapore. He builds free learning tools for students and teachers, runs his own infrastructure, and is good at explaining hard things simply.",
   "about": [
-    "I work in cybersecurity full time, on the risk and compliance side, and I tutor special needs students on the side. The tutoring is why the Versed tools exist and why they are free: the kids I teach needed calmer, simpler tools than the ones schools pay for, so I built them.",
-    "My training is hands-on. I hold the GIAC Certified Incident Handler and worked through Hack The Box's SOC analyst path. I like the moment a vague symptom turns into one specific line in one specific log.",
-    "Six years of teaching children who struggle with text has made me good at one thing most engineers avoid: explaining something hard to someone who is not technical, without talking down to them."
+    "I work in cybersecurity full time, on the risk and compliance side. I also tutor special needs kids, and have since 2020. That's why the Versed tools exist and why they're free: my students needed calmer, simpler tools than the ones schools pay for, so I built them.",
+    "Most of my training has been hands-on. I hold the GIAC Certified Incident Handler and worked through Hack The Box's SOC analyst path. My favourite part of any investigation is when a vague \"it's broken\" turns into one specific line in one specific log.",
+    "Six years of teaching kids who struggle with reading has made me good at something most engineers dodge: explaining a hard thing to someone who isn't technical, without talking down to them."
   ],
   "training": [
     {
@@ -48,66 +48,66 @@
   "also": [
     {
       "name": "pdf-redaction-check",
-      "what": "Checks whether the redacted text in a PDF is actually gone. Finds words still sitting under black boxes, including boxes stamped on as overlays, and redaction marks that were never applied. Built after it caught a real document my first version missed.",
+      "what": "Checks whether redacted text in a PDF is really gone. It finds words still under black boxes, overlays included, and redaction marks nobody applied. Rewritten after a real document got past my first version.",
       "href": "https://github.com/aaronsawit/pdf-redaction-check"
     },
     {
       "name": "llm-guardrail-tests",
-      "what": "Regression tests for the guardrails on your own AI feature: 20 known prompt-injection patterns, graded deterministically with random markers and a canary, no judge model, ready for CI.",
+      "what": "Regression tests for the guardrails on your own AI feature: 20 known prompt-injection patterns, graded deterministically with random markers and a canary instead of a judge model. Drops into CI.",
       "href": "https://github.com/aaronsawit/llm-guardrail-tests"
     },
     {
       "name": "model-diff-audit",
-      "what": "Bit-level comparison of an AI model against the base it claims to come from, separating ordinary fine-tuning from tampering. On a real tampered model it found the 90 edited rows out of 151,936.",
+      "what": "Compares an AI model bit by bit against the base it claims to come from, and tells normal fine-tuning apart from tampering. On a real tampered model, it found the 90 edited rows out of 151,936.",
       "href": "https://github.com/aaronsawit/model-diff-audit"
     },
     {
       "name": "toolcall-probe",
-      "what": "Asks a local model endpoint directly whether it really calls tools or only describes them, and says which layer is at fault.",
+      "what": "Asks a local model endpoint straight out whether it really calls tools or just talks about calling them, and tells you which layer is to blame.",
       "href": "https://github.com/aaronsawit/toolcall-probe"
     },
     {
       "name": "cctokens",
-      "what": "Shows where Claude Code tokens go: usage and API-equivalent cost by day, model and project. One Python file, no dependencies, nothing leaves the machine. Counts each message once, which the logs do not.",
+      "what": "Shows where your Claude Code tokens go: usage and API-equivalent cost by day, model and project. One Python file, no dependencies, nothing leaves your machine. Counts each message once, unlike the logs.",
       "href": "https://github.com/aaronsawit/cctokens"
     },
     {
       "name": "docker-gpu-reload-check",
-      "what": "Finds containers that will silently lose their NVIDIA GPU on the next systemd reload, and prints the fix. Read-only, tested against my own two-GPU server.",
+      "what": "Finds containers that will quietly lose their NVIDIA GPU on the next systemd reload, and prints the fix. Read-only. Tested on my own two-GPU server.",
       "href": "https://github.com/aaronsawit/docker-gpu-reload-check"
     },
     {
       "name": "private-relay-block",
-      "what": "Puts Apple devices back on the network's DNS filter by blocking iCloud Private Relay the way Apple documents, plus the cached relay addresses. Dry-run and clean undo.",
+      "what": "Gets Apple devices back behind the network's DNS filter by blocking iCloud Private Relay the way Apple documents it, plus the cached relay addresses. Has a dry run and a clean undo.",
       "href": "https://github.com/aaronsawit/private-relay-block"
     },
     {
       "name": "disc-image-id",
-      "what": "Identifies Xbox, PS1 and PS2 disc images by signature instead of file extension, and converts the full Xbox dumps that the xemu emulator rejects. Tested, open source.",
+      "what": "Tells Xbox, PS1 and PS2 disc images apart by their signature instead of the file extension, and converts the full Xbox dumps the xemu emulator refuses. Tested and open source.",
       "href": "https://github.com/aaronsawit/disc-image-id"
     },
     {
       "name": "Exam-practice tutoring app",
-      "what": "Student and teacher web app for primary school English, built with a partner who owns the backend. Hint ladders that fade as mastery grows, and a teacher view of every attempt. In development.",
+      "what": "A primary school English app for students and teachers, built with a partner who owns the backend. Hints fade as a student gets the hang of it, and teachers see every attempt. Still in development.",
       "href": "/#contact"
     }
   ],
   "fit": [
     {
       "title": "Detection and response",
-      "text": "Log analysis, SIEM work and incident handling. I write detections other people can read and test, and I investigate until there is one named cause.",
+      "text": "I do log analysis, SIEM work and incident handling. I write detections other people can read and test, and I keep digging until I can name the one thing that caused it.",
       "proof": "Detection tooling",
       "href": "/work/detection/"
     },
     {
       "title": "Security-minded infrastructure",
-      "text": "Linux, containers, networking and monitoring, run as code with backups I have restored from and a threat model I can explain.",
+      "text": "I run Linux, containers, networking and monitoring as code, with backups I've actually restored from and a threat model I can explain.",
       "proof": "One box, forty services",
       "href": "/work/homelab/"
     },
     {
       "title": "Shipping secure products",
-      "text": "I take products from a blank page to real users on Cloudflare's edge, and make the privacy and abuse decisions as part of the design.",
+      "text": "I take products from a blank page to real users on Cloudflare's edge, and I sort out privacy and abuse as part of the design, not as a patch later.",
       "proof": "Versed",
       "href": "/work/versed/"
     }

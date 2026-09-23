@@ -2,7 +2,7 @@
 order: 2
 title: Detection tooling
 kind: Blue team, Python
-summary: Small, tested tools from my defensive security practice: a log triage pipeline that pairs rule-based detection with an LLM classifier, a phishing link analyser, and hand-written Snort and iptables rules.
+summary: Small, tested tools from my blue team practice: a log triage pipeline that pairs rule-based detection with an LLM classifier, a phishing link checker, and Snort and iptables rules I wrote by hand.
 role: Author
 when: 2024 to 2025
 link: https://github.com/aaronsawit

@@ -251,6 +251,7 @@ export function publicLevels() {
 
 // ---- Cloudflare fetch handler ----
 
+const ALLOWED_HOSTS = new Set(["aaronsawit.com", "www.aaronsawit.com"]);
 const JSONH = { "content-type": "application/json", "cache-control": "no-store" };
 
 function json(obj, status = 200) {
@@ -261,6 +262,9 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname !== "/api/break") return env.ASSETS.fetch(request);
+    // The rate limit is a Cloudflare rule on aaronsawit.com, so the model is only reachable there.
+    // *.pages.dev (and every preview deployment) would otherwise be an unlimited side door.
+    if (!ALLOWED_HOSTS.has(url.hostname)) return json({ error: "play at https://aaronsawit.com/break/" }, 403);
     if (request.method === "GET") return json({ levels: publicLevels(), model: MODEL });
     if (request.method !== "POST") return json({ error: "method" }, 405);
 

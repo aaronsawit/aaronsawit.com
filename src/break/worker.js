@@ -252,6 +252,21 @@ export function publicLevels() {
 // ---- Cloudflare fetch handler ----
 
 const ALLOWED_HOSTS = new Set(["aaronsawit.com", "www.aaronsawit.com"]);
+// Hard daily ceiling on model calls (every call counts, including the judge), kept in D1 because an
+// UPDATE ... RETURNING is atomic and a KV counter is not. Roughly the account's free daily Workers AI
+// allowance, so a flood of traffic costs nothing: the bot rests until 00:00 UTC (08:00 Singapore).
+export const DAILY_AI_CALLS = 800;
+export const RESTING = "I'm resting for today, I've had a lot of visitors. Come back tomorrow and try again.";
+class OutOfBudget extends Error {}
+
+async function spendOne(db) {
+  if (!db) throw new OutOfBudget();                         // no counter configured: fail closed, never uncapped
+  const day = new Date().toISOString().slice(0, 10);        // UTC, the same clock Workers AI resets on
+  const row = await db.prepare(
+    "INSERT INTO budget (day, calls) VALUES (?1, 1) ON CONFLICT(day) DO UPDATE SET calls = calls + 1 RETURNING calls"
+  ).bind(day).first();
+  if (!row || row.calls > DAILY_AI_CALLS) throw new OutOfBudget();
+}
 const JSONH = { "content-type": "application/json", "cache-control": "no-store" };
 
 function json(obj, status = 200) {
@@ -278,6 +293,7 @@ export default {
     // Workers AI, wrapped so handleChat stays model-agnostic. Every call is frozen inside a level's
     // guard prompt, so this endpoint can never be used as a general-purpose chatbot.
     const ai = async (messages, opts = {}) => {
+      await spendOne(env.BUDGET);
       const r = await env.AI.run(MODEL, {
         messages,
         max_tokens: opts.judge ? 6 : MAX_TOKENS,
@@ -291,6 +307,7 @@ export default {
       if (body.action === "chat") return json(await handleChat(body, { ai }));
       return json({ error: "unknown action" }, 400);
     } catch (e) {
+      if (e instanceof OutOfBudget) return json({ reply: RESTING, resting: true });
       return json({ error: "the bot fell over, try again", detail: String(e).slice(0, 120) }, 500);
     }
   },

@@ -276,6 +276,7 @@ a.tech:hover { border-color: var(--lime); color: var(--lime); }
 .diagram .box { fill: var(--card); stroke: var(--line); stroke-width: 1.5; }
 .diagram .box-key { fill: var(--card2); stroke: var(--lime); }
 .diagram .on-key { fill: var(--text); }
+.diagram .on-bar { fill: var(--ink); font-weight: 700; }
 .diagram .on-signal { fill: var(--ink); }
 .diagram .wire { stroke: var(--muted); stroke-width: 1.5; fill: none; }
 .diagram .bar { fill: var(--line); } .diagram .bar-key { fill: var(--lime); } .diagram .bar-signal { fill: var(--lime); }

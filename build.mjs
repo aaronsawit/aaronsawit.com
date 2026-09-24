@@ -81,7 +81,7 @@ const footer = `
 </footer>`;
 
 const FONTS = "https://fonts.googleapis.com/css2?family=Geist:wght@400..800&family=Geist+Mono:wght@400..600&display=swap";
-const page = ({ title, description, body, active = "", klass = "", canonical = "/", scripts = [], jsonld = null }) => `<!doctype html>
+const page = ({ title, description, body, active = "", klass = "", canonical = "/", scripts = [], jsonld = null, ogImage = "/img/og.png" }) => `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -93,7 +93,7 @@ const page = ({ title, description, body, active = "", klass = "", canonical = "
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${site.url}${canonical}">
-<meta property="og:image" content="${site.url}/img/og.png">
+<meta property="og:image" content="${site.url}${ogImage}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="${esc(site.name)}: write-ups" href="/rss.xml">
 <link rel="icon" href="/favicon.png" type="image/png">
@@ -416,8 +416,8 @@ ${detections.map((d) => `
 
 // ---------- break my bot (interactive) ----------
 write("break/index.html", page({
-  title: `Break my bot · ${site.name}`, active: "ai", canonical: "/break/", scripts: ["/break/client.js"],
-  description: "A prompt-injection game: talk a chatbot into leaking its password across six levels, each with a real defence. By Aaron Sawit.",
+  title: `Break my bot · ${site.name}`, active: "ai", canonical: "/break/", scripts: ["/break/client.js"], ogImage: "/img/og-break.png",
+  description: "A chatbot knows a password and has been told not to tell you. Six levels to get it out anyway. A small prompt-injection game by Aaron Sawit.",
   body: `
 <section class="doc-head wrap">
   <p class="eyebrow">Interactive · prompt injection</p>
